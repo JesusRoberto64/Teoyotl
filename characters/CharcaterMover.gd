@@ -16,6 +16,9 @@ export var ignore_rotation = false
 
 signal movement_info
 
+## sistema de normal 
+var normal_raycast = Vector3.ZERO
+
 var frozen = false
 
 func _ready():
@@ -34,30 +37,28 @@ func _physics_process(delta):
 	if frozen:
 		return
 	var cur_move_vec = move_vec
+	
 	if !ignore_rotation:
 		cur_move_vec = cur_move_vec.rotated(Vector3.UP,body_to_move.rotation.y)
 	
 	velocity += move_accel * cur_move_vec - velocity * Vector3(drag,0,drag) + gravity * Vector3.DOWN *delta
-	
-	velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true)
+	#velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true) # como lo tienen en los cursos y tutoriales
+	body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true) # mi solucion temporal HACKY
 	
 	var grounded = body_to_move.is_on_floor()
+	
 	if grounded:
-		#velocity = Vector3.ZERO
 		velocity.y = -0.01
-		snap_vec = Vector3.DOWN
-		
+		snap_vec = -body_to_move.get_floor_normal()
 		pass
 	if grounded and pressed_jump:
 		velocity.y = jump_force 
 		snap_vec = Vector3.ZERO
-		print("salto")
 	else:
-		snap_vec = Vector3.DOWN
 		pass
 	pressed_jump = false
 	emit_signal("movement_info",velocity,grounded)
-	print(grounded)
+	
 
 func frozen():
 	frozen = true
@@ -65,7 +66,3 @@ func frozen():
 func Unfrozen():
 	frozen = false
 	
-
-
-
- 
