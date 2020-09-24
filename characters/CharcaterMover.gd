@@ -39,22 +39,25 @@ func _physics_process(delta):
 	
 	velocity += move_accel * cur_move_vec - velocity * Vector3(drag,0,drag) + gravity * Vector3.DOWN *delta
 	
+	var normal_floor #= body_to_move.get_floor_normal() 
+	
 	velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true,4,1.48353)
 	
 	var grounded = body_to_move.is_on_floor()
 	if grounded:
 		velocity.y = -0.01
-		snap_vec = Vector3.DOWN
+		snap_vec = -body_to_move.get_floor_normal() #Vector3.DOWN
 		# este e sun test de la branch
-		gravity = 0
+		#gravity = 0
 		pass
 	if grounded and pressed_jump:
+		velocity = body_to_move.move_and_slide_with_snap(velocity,Vector3.ZERO,Vector3.UP,true,4,1.48353)
 		velocity.y = jump_force 
-		snap_vec = Vector3.ZERO
+		#snap_vec = Vector3.ZERO
 		gravity = 60
 		print("salto")
 	else:
-		snap_vec = Vector3.DOWN
+		snap_vec = -body_to_move.get_floor_normal() #Vector3.DOWN
 		pass
 	pressed_jump = false
 	emit_signal("movement_info",velocity,grounded)
