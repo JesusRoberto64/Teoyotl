@@ -39,25 +39,26 @@ func _physics_process(delta):
 	
 	velocity += move_accel * cur_move_vec - velocity * Vector3(drag,0,drag) + gravity * Vector3.DOWN *delta
 	
-	velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true)
+	velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true,4,1.48353)
 	
 	var grounded = body_to_move.is_on_floor()
 	if grounded:
-		#velocity = Vector3.ZERO
 		velocity.y = -0.01
 		snap_vec = Vector3.DOWN
-		
+		# este e sun test de la branch
+		gravity = 0
 		pass
 	if grounded and pressed_jump:
 		velocity.y = jump_force 
 		snap_vec = Vector3.ZERO
+		gravity = 60
 		print("salto")
 	else:
 		snap_vec = Vector3.DOWN
 		pass
 	pressed_jump = false
 	emit_signal("movement_info",velocity,grounded)
-	print(grounded)
+	
 
 func frozen():
 	frozen = true
