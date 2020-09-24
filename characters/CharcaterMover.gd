@@ -37,34 +37,24 @@ func _physics_process(delta):
 	if frozen:
 		return
 	var cur_move_vec = move_vec
+	
 	if !ignore_rotation:
 		cur_move_vec = cur_move_vec.rotated(Vector3.UP,body_to_move.rotation.y)
-	#gravity = 60
+	
 	velocity += move_accel * cur_move_vec - velocity * Vector3(drag,0,drag) + gravity * Vector3.DOWN *delta
-	
-	#var normal_floor = body_to_move.get_floor_normal() 
-	
-	#snap_vec =  normal_raycast
-	
-	velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true)
+	#velocity = body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true) # como lo tienen en los cursos y tutoriales
+	body_to_move.move_and_slide_with_snap(velocity,snap_vec,Vector3.UP,true) # mi solucion temporal HACKY
 	
 	var grounded = body_to_move.is_on_floor()
+	
 	if grounded:
 		velocity.y = -0.01
-		#snap_vec = -body_to_move.get_floor_normal() #Vector3.DOWN
-		#print(body_to_move.get_floor_normal(), "kinectic")
-		#print(normal_raycast, " raycast")
-		# este e sun test de la branch
-		#gravity = 0
+		snap_vec = -body_to_move.get_floor_normal()
 		pass
 	if grounded and pressed_jump:
-		#velocity = body_to_move.move_and_slide_with_snap(velocity,Vector3.ZERO,Vector3.UP,true,4,1.48353)
 		velocity.y = jump_force 
-		#snap_vec = Vector3.ZERO
-		#gravity = 60
-		#print("salto")
+		snap_vec = Vector3.ZERO
 	else:
-		#snap_vec = -body_to_move.get_floor_normal() #Vector3.DOWN
 		pass
 	pressed_jump = false
 	emit_signal("movement_info",velocity,grounded)
@@ -76,7 +66,3 @@ func frozen():
 func Unfrozen():
 	frozen = false
 	
-
-func _on_RayCast_normal_info(normal: Vector3):
-	normal_raycast = normal
-	pass # Replace with function body.
