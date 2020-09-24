@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://weapons/crosshair/crosshair066.png" type="Texture" id=18]
 [ext_resource path="res://weapons/crosshair/crosshair065.png" type="Texture" id=19]
 [ext_resource path="res://weapons/crosshair/crosshair001.png" type="Texture" id=20]
+[ext_resource path="res://characters/RayCast.gd" type="Script" id=21]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -482,7 +483,13 @@ max_speed = 10
 
 [node name="HealthMannager" type="Spatial" parent="."]
 script = ExtResource( 3 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.433311, 0 )
+enabled = true
+script = ExtResource( 21 )
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]
 [connection signal="movement_info" from="CharcaterMover" to="Camera/WeaponMannager" method="update_animation"]
+[connection signal="normal_info" from="RayCast" to="CharcaterMover" method="_on_RayCast_normal_info"]
