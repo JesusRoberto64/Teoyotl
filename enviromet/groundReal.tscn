@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://enviromet/rawassets/grass_lowres.png" type="Texture" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 100, 2, 100 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 20, 20, 50 )
+
+[node name="ground" type="CSGMesh"]
+use_collision = true
+mesh = SubResource( 1 )
+material = SubResource( 2 )
