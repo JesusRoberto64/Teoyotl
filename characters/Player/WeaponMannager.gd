@@ -10,6 +10,9 @@ var slots_unlocked = {
 
 onready var anim_player = $AnimationPlayer
 onready var weapons = $Weapons.get_children()
+onready var alert_area_hearing = $AlertAreaHearing
+onready var alert_area_los = $AlertAreaLos
+
 var cur_slot = 0
 var cur_weapon = null
 var fire_point = Spatial
@@ -24,6 +27,11 @@ func init(_fire_point: Spatial, _bodies_to_exclude: Array):
 	for weapon in weapons:
 		if weapon.has_method("init"):
 			weapon.init(_fire_point, _bodies_to_exclude)
+	
+	weapons[WEAPONS_SLOTS.MACHINE_GUN].connect("fired",self, "alert_nearby_enemies")
+	weapons[WEAPONS_SLOTS.SHOTGUN].connect("fired",self, "alert_nearby_enemies")
+	weapons[WEAPONS_SLOTS.ROCKET_LOUNCHER].connect("fired",self, "alert_nearby_enemies")
+	
 	switch_to_weapon_slot(WEAPONS_SLOTS.MACHETE)
 
 func attack(attack_input_just_pressed : bool, attack_input_held : bool):
@@ -70,7 +78,16 @@ func update_animation(velocity: Vector3, grounded: bool):
 	if !grounded or velocity.length() < 6.0:
 		anim_player.play("idle",0.08)
 	anim_player.play("moving")
-	
+
+func alert_nearby_enemies():
+	var nearby_enemies = alert_area_los.get_overlapping_bodies()
+	for nearby_enemy in nearby_enemies:
+		if nearby_enemy.has_method("alert"):
+			nearby_enemy.alert()
+	nearby_enemies = alert_area_hearing.get_overlapping_bodies()
+	for nearby_enemy in nearby_enemies:
+		if nearby_enemy.has_method("alert"):
+			nearby_enemy.alert(false)
 
 
 

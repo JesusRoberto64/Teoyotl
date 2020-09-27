@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://characters/Enemies/raw_assets/birdmonster.glb" type="PackedScene" id=1]
 [ext_resource path="res://characters/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/Enemies/Monster.gd" type="Script" id=3]
+[ext_resource path="res://characters/HealthMannager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -33,6 +35,8 @@ extents = Vector3( 0.99979, 0.771905, 1.09789 )
 radius = 0.333719
 
 [node name="BirdMonster" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -43,7 +47,7 @@ shape = SubResource( 1 )
 
 [node name="Skeleton" parent="Graphics/Armature" index="0"]
 bones/0/bound_children = [ NodePath("Hip") ]
-bones/1/bound_children = [ NodePath("Body") ]
+bones/1/bound_children = [ NodePath("Body"), NodePath("Head") ]
 bones/2/bound_children = [ NodePath("ArmUL") ]
 bones/3/bound_children = [ NodePath("ArmLL") ]
 bones/4/bound_children = [ NodePath("ArmUR") ]
@@ -177,12 +181,21 @@ bone_name = "body"
 transform = Transform( 0.231528, -5.08097e-08, 3.36939e-08, 1.0777e-08, -0.0713728, -0.26701, 5.69032e-08, 0.220253, -0.0865245, 1.21974e-07, 0.262345, 0.0299348 )
 shape = SubResource( 7 )
 
-[node name="Hitbox2" parent="Graphics/Armature/Skeleton/Body" instance=ExtResource( 2 )]
+[node name="Head" type="BoneAttachment" parent="Graphics/Armature/Skeleton" index="11"]
+transform = Transform( 1, 0, 2.38418e-07, -8.6824e-08, 0.931334, 0.364166, -2.22047e-07, -0.364166, 0.931334, 0, 1.13977, 0 )
+bone_name = "body"
+
+[node name="Hitbox2" parent="Graphics/Armature/Skeleton/Head" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 weak_spot = true
 
-[node name="CollisionShape2" type="CollisionShape" parent="Graphics/Armature/Skeleton/Body/Hitbox2"]
+[node name="CollisionShape2" type="CollisionShape" parent="Graphics/Armature/Skeleton/Head/Hitbox2"]
 transform = Transform( 0.231528, -5.08098e-08, 3.36939e-08, 1.0777e-08, -0.0713728, -0.26701, 5.69032e-08, 0.220253, -0.0865245, 4.15389e-08, 0.471372, 0.317622 )
 shape = SubResource( 8 )
+
+[node name="HealthMannager" parent="." instance=ExtResource( 4 )]
+max_health = 20
+
+[node name="CharcaterMover" parent="." instance=ExtResource( 5 )]
 
 [editable path="Graphics"]

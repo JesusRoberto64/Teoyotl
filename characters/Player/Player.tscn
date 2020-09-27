@@ -1,8 +1,8 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://characters/CharcaterMover.gd" type="Script" id=2]
-[ext_resource path="res://characters/HealthMannager.gd" type="Script" id=3]
+[ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/HealthMannager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/Player/WeaponMannager.gd" type="Script" id=4]
 [ext_resource path="res://weapons/raw_assets/machete.glb" type="PackedScene" id=5]
 [ext_resource path="res://weapons/raw_assets/machinegun.glb" type="PackedScene" id=6]
@@ -265,7 +265,15 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( -0.03, 0, 0 ) ]
 }
 
-[node name="KinematicBody" type="KinematicBody"]
+[sub_resource type="SphereShape" id=12]
+radius = 13.0
+
+[sub_resource type="SphereShape" id=13]
+radius = 50.0
+
+[node name="KinematicBody" type="KinematicBody" groups=[
+"player",
+]]
 collision_layer = 6
 collision_mask = 3
 script = ExtResource( 1 )
@@ -473,16 +481,26 @@ autoplay = "idle"
 anims/idle = SubResource( 10 )
 anims/moving = SubResource( 11 )
 
+[node name="AlertAreaHearing" type="Area" parent="Camera/WeaponMannager"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponMannager/AlertAreaHearing"]
+shape = SubResource( 12 )
+
+[node name="AlertAreaLos" type="Area" parent="Camera/WeaponMannager"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponMannager/AlertAreaLos"]
+shape = SubResource( 13 )
+
 [node name="FirePoint" type="Spatial" parent="Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0869235 )
 
-[node name="CharcaterMover" type="Spatial" parent="."]
-script = ExtResource( 2 )
-max_speed = 10
+[node name="CharcaterMover" parent="." instance=ExtResource( 2 )]
 
-[node name="HealthMannager" type="Spatial" parent="."]
-script = ExtResource( 3 )
+[node name="HealthMannager" parent="." instance=ExtResource( 3 )]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]
-[connection signal="movement_info" from="CharcaterMover" to="Camera/WeaponMannager" method="update_animation"]

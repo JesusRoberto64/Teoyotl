@@ -75,4 +75,4 @@ func heal(amount):
 
 func kill():
 	dead = true
-	character_mover.frozen()
+	character_mover.freeze()

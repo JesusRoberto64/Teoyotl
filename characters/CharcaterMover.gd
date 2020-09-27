@@ -60,7 +60,7 @@ func _physics_process(delta):
 	emit_signal("movement_info",velocity,grounded)
 	
 
-func frozen():
+func freeze():
 	frozen = true
 
 func Unfrozen():
