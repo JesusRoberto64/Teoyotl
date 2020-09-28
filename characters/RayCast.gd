@@ -7,6 +7,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	#print(is_colliding())
+	
 	emit_signal("normal_info",get_collision_normal())
 	pass

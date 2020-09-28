@@ -18,12 +18,17 @@ onready var camera = $Camera
 onready var character_mover = $CharcaterMover
 onready var health_mannager = $HealthMannager
 onready var weapon_mannager = $Camera/WeaponMannager
-
+onready var pickup_mannager = $PickupMannager
 var dead =  false 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	character_mover.init(self)
+	
+	pickup_mannager.max_player_health = health_mannager.max_health
+	health_mannager.connect("helath_changed",pickup_mannager,"update_players_health")
+	pickup_mannager.connect("got_pickup",weapon_mannager,"get_pickup")
+	pickup_mannager.connect("got_pickup",health_mannager,"get_pickup")
 	health_mannager.init()
 	health_mannager.connect("dead",self,"kill")
 	weapon_mannager.init($Camera/FirePoint,[self])
@@ -68,7 +73,7 @@ func _input(event):
 
 func hurt(damage,dir):
 	health_mannager.hurt(damage,dir)
-	print("hit")
+	
 
 func heal(amount):
 	health_mannager.heal(amount)

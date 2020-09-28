@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://weapons/crosshair/crosshair066.png" type="Texture" id=18]
 [ext_resource path="res://weapons/crosshair/crosshair065.png" type="Texture" id=19]
 [ext_resource path="res://weapons/crosshair/crosshair001.png" type="Texture" id=20]
+[ext_resource path="res://characters/Player/PickupMannager.gd" type="Script" id=21]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -271,6 +272,9 @@ radius = 13.0
 [sub_resource type="SphereShape" id=13]
 radius = 50.0
 
+[sub_resource type="CapsuleShape" id=14]
+radius = 0.7
+
 [node name="KinematicBody" type="KinematicBody" groups=[
 "player",
 ]]
@@ -296,7 +300,7 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
 visible = false
 script = ExtResource( 10 )
-damage = 10
+damage = 20
 ammo = -1
 attack_rate = 0.4
 
@@ -501,6 +505,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0869235 )
 [node name="CharcaterMover" parent="." instance=ExtResource( 2 )]
 
 [node name="HealthMannager" parent="." instance=ExtResource( 3 )]
+
+[node name="PickupMannager" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource( 21 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PickupMannager"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.03595, 0 )
+shape = SubResource( 14 )
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]

@@ -12,7 +12,7 @@ func explode():
 	var space_state = get_world().get_direct_space_state()
 	var results = space_state.intersect_shape(query)
 	for data in results:
-		#print("pass damage")
+		
 		if data.collider.has_method("hurt"):
 			data.collider.hurt(damage,global_transform.origin.direction_to(data.collider.global_transform.origin))
 		pass

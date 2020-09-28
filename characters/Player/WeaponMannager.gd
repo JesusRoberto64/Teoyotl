@@ -1,11 +1,11 @@
 extends Spatial
 
-enum WEAPONS_SLOTS {MACHETE,MACHINE_GUN,SHOTGUN,ROCKET_LOUNCHER}
+enum WEAPONS_SLOTS {MACHETE,MACHINE_GUN,SHOTGUN,ROCKET_LAUNCHER}
 var slots_unlocked = {
 	WEAPONS_SLOTS.MACHETE: true,
-	WEAPONS_SLOTS.MACHINE_GUN: true,
-	WEAPONS_SLOTS.SHOTGUN: true,
-	WEAPONS_SLOTS.ROCKET_LOUNCHER: true,
+	WEAPONS_SLOTS.MACHINE_GUN: false,
+	WEAPONS_SLOTS.SHOTGUN: false,
+	WEAPONS_SLOTS.ROCKET_LAUNCHER: false,
 } 
 
 onready var anim_player = $AnimationPlayer
@@ -18,8 +18,7 @@ var cur_weapon = null
 var fire_point = Spatial
 var bodies_to_exclude : Array = []
 
-func _ready():
-	pass
+signal ammo_changed 
 
 func init(_fire_point: Spatial, _bodies_to_exclude: Array):
 	fire_point = _fire_point
@@ -30,7 +29,10 @@ func init(_fire_point: Spatial, _bodies_to_exclude: Array):
 	
 	weapons[WEAPONS_SLOTS.MACHINE_GUN].connect("fired",self, "alert_nearby_enemies")
 	weapons[WEAPONS_SLOTS.SHOTGUN].connect("fired",self, "alert_nearby_enemies")
-	weapons[WEAPONS_SLOTS.ROCKET_LOUNCHER].connect("fired",self, "alert_nearby_enemies")
+	weapons[WEAPONS_SLOTS.ROCKET_LAUNCHER].connect("fired",self, "alert_nearby_enemies")
+	
+	for weapon in weapons:
+		weapon.connect("fired",self,"emmit_ammo_changed_signal")
 	
 	switch_to_weapon_slot(WEAPONS_SLOTS.MACHETE)
 
@@ -64,6 +66,7 @@ func switch_to_weapon_slot(slot_ind: int):
 		cur_weapon.set_active()
 	else:
 		cur_weapon.show()
+	emmit_ammo_changed_signal()
 
 func disable_all_weapons():
 	for weapon in weapons:
@@ -89,8 +92,34 @@ func alert_nearby_enemies():
 		if nearby_enemy.has_method("alert"):
 			nearby_enemy.alert(false)
 
+func get_pickup(pickup_type,ammo):
+	match pickup_type:
+		Pickup.PICKUP_TYPES.MACHNE_GUN:
+			if !slots_unlocked[WEAPONS_SLOTS.MACHINE_GUN]:
+				slots_unlocked[WEAPONS_SLOTS.MACHINE_GUN] = true
+				switch_to_weapon_slot(WEAPONS_SLOTS.MACHINE_GUN)
+			weapons[WEAPONS_SLOTS.MACHINE_GUN].ammo += ammo
+		Pickup.PICKUP_TYPES.MACHINE_GUN_AMMO:
+			weapons[WEAPONS_SLOTS.MACHINE_GUN].ammo += ammo
+		Pickup.PICKUP_TYPES.SHOTGUN:
+			if !slots_unlocked[WEAPONS_SLOTS.SHOTGUN]:
+				slots_unlocked[WEAPONS_SLOTS.SHOTGUN] = true
+				switch_to_weapon_slot(WEAPONS_SLOTS.SHOTGUN)
+			weapons[WEAPONS_SLOTS.SHOTGUN].ammo += ammo
+		Pickup.PICKUP_TYPES.SHOTGUN_AMMO:
+			weapons[WEAPONS_SLOTS.SHOTGUN].ammo += ammo
+		Pickup.PICKUP_TYPES.ROCKET_LAUNCHER:
+			if !slots_unlocked[WEAPONS_SLOTS.ROCKET_LAUNCHER]:
+				slots_unlocked[WEAPONS_SLOTS.ROCKET_LAUNCHER] = true
+				switch_to_weapon_slot(WEAPONS_SLOTS.ROCKET_LAUNCHER)
+			weapons[WEAPONS_SLOTS.ROCKET_LAUNCHER].ammo += ammo
+		Pickup.PICKUP_TYPES.ROCKET_LAUNCHER_AMMO:
+			weapons[WEAPONS_SLOTS.ROCKET_LAUNCHER].ammo += ammo
+	emmit_ammo_changed_signal()
 
-
+func emmit_ammo_changed_signal():
+	emit_signal("ammo_changed",cur_weapon.ammo)
+	
 
 
 

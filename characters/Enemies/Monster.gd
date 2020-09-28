@@ -43,7 +43,7 @@ func _ready():
 	set_state_idle()
 
 func _process(delta):
-	#print(can_see_player())
+	
 	match cur_state:
 		STATES.IDLE:
 			process_state_idle(delta)
