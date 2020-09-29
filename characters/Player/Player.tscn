@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=24]
 [ext_resource path="res://UI/KLEINTEN.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=26]
+[ext_resource path="res://SFX/balazo.wav" type="AudioStream" id=27]
+[ext_resource path="res://SFX/sinbala.wav" type="AudioStream" id=28]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -421,7 +423,6 @@ automatic = true
 attack_rate = 0.1
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponMannager/Weapons/MachineGun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0369332 )
 
 [node name="machinegun" parent="Camera/WeaponMannager/Weapons/MachineGun/Graphics" instance=ExtResource( 6 )]
 transform = Transform( 0.147194, 0, 0, 0, 0.147194, 0, 0, 0, 0.147194, 0, 0, 0 )
@@ -460,6 +461,16 @@ texture = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GunShotSound" type="AudioStreamPlayer3D" parent="Camera/WeaponMannager/Weapons/MachineGun"]
+stream = ExtResource( 27 )
+unit_db = 36.957
+bus = "sfx"
+
+[node name="OutOfAmmoSound" type="AudioStreamPlayer3D" parent="Camera/WeaponMannager/Weapons/MachineGun"]
+stream = ExtResource( 28 )
+unit_db = 25.0
+bus = "sfx"
 
 [node name="Shotgun" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117018, 0.137991, 0.825986 )
@@ -676,7 +687,9 @@ __meta__ = {
 [node name="RmoveInfoTimer" type="Timer" parent="CanvasLayer/PickupInfo"]
 wait_time = 2.0
 [connection signal="ammo_changed" from="Camera/WeaponMannager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
+[connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
+[connection signal="out_of_ammo" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/OutOfAmmoSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]
 [connection signal="dead" from="HealthMannager" to="CanvasLayer/RestartMessage" method="show"]
