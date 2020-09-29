@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hit2.wav-fcf9e1cefaebf45c3a50f76ac7807bb0.sample"
+path="res://.import/balazo2.wav-47895dc4074f1b432371548884a8d2ad.sample"
 
 [deps]
 
-source_file="res://SFX/hit2.wav"
-dest_files=[ "res://.import/hit2.wav-fcf9e1cefaebf45c3a50f76ac7807bb0.sample" ]
+source_file="res://SFX/Foleys/balazo2.wav"
+dest_files=[ "res://.import/balazo2.wav-47895dc4074f1b432371548884a8d2ad.sample" ]
 
 [params]
 

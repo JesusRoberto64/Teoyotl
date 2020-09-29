@@ -26,8 +26,8 @@
 [ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=24]
 [ext_resource path="res://UI/KLEINTEN.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=26]
-[ext_resource path="res://SFX/balazo.wav" type="AudioStream" id=27]
-[ext_resource path="res://SFX/sinbala.wav" type="AudioStream" id=28]
+[ext_resource path="res://SFX/Foleys/balazo2.wav" type="AudioStream" id=27]
+[ext_resource path="res://SFX/Foleys/sinbala.wav" type="AudioStream" id=28]
 [ext_resource path="res://UI/800X600blank.png" type="Texture" id=29]
 
 [sub_resource type="CapsuleShape" id=1]

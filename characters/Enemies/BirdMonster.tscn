@@ -7,10 +7,11 @@
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/Enemies/AimAtObject.gd" type="Script" id=6]
 [ext_resource path="res://weapons/DamageArea.tscn" type="PackedScene" id=7]
-[ext_resource path="res://SFX/hit2.wav" type="AudioStream" id=8]
-[ext_resource path="res://SFX/hit3.wav" type="AudioStream" id=9]
-[ext_resource path="res://SFX/hit1.wav" type="AudioStream" id=10]
+[ext_resource path="res://SFX/Chacters/hit2.wav" type="AudioStream" id=8]
+[ext_resource path="res://SFX/Chacters/hit3.wav" type="AudioStream" id=9]
+[ext_resource path="res://SFX/Chacters/hit1.wav" type="AudioStream" id=10]
 [ext_resource path="res://SFX/HitSound.gd" type="Script" id=11]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
