@@ -32,7 +32,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/test_width=512
+window/size/width=800
+window/size/test_width=400
 window/size/test_height=300
 window/stretch/aspect="keep"
 

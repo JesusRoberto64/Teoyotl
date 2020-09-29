@@ -58,7 +58,6 @@ func _physics_process(delta):
 		pass
 	pressed_jump = false
 	emit_signal("movement_info",velocity,grounded)
-	
 
 func freeze():
 	frozen = true
