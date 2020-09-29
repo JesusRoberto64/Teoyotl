@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0.0253646 ), Vector3( 0.00989975, 0.061447, 0.052341 ), Vector3( 0.00989975, 0.061447, 0.052341 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0.0253646 ), Vector3( 0.00989975, 0.061447, 0.052341 ), Vector3( 0.00989975, 0.061447, 0.052341 ), Vector3( -0.03, -0.06, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Graphics:rotation_degrees")
@@ -73,7 +73,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( -0.03, -0.06, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Graphics:rotation_degrees")
@@ -367,8 +367,8 @@ vec2 uv_curve(vec2 uv){
 	
 	uv = (uv - 0.5) * 2.0;
 	
-	uv.x *= 1.0 + pow(abs(uv.y) / 4.5, 2.0);
-	uv.y *= 1.0 + pow(abs(uv.x) / 3.5, 2.0);
+	uv.x *= 1.0 + pow(abs(uv.y) / 4.0, 2.0);
+	uv.y *= 1.0 + pow(abs(uv.x) / 5.0, 2.0);
 	
 	uv /= 1.2;
 	
@@ -382,8 +382,8 @@ void fragment(){
 	float PI = 3.14159;
 	
 	float r = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*0.0),0.0).r;
-	float g = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*2.0),0.0).g;
-	float b = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-2.0),0.0).b;
+	float g = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*1.5),0.0).g;
+	float b = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-1.5),0.0).b;
 	
 	float s = sin(uv_curve(SCREEN_UV).y * scan_line_float * PI);
 	s = (s * 0.5 + 0.5) * 0.9 + 0.1;
@@ -429,7 +429,7 @@ ammo = -1
 attack_rate = 0.4
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponMannager/Weapons/Machete"]
-transform = Transform( 1, 0, 0, 0, 0.861452, -0.507839, 0, 0.507839, 0.861452, 0, 0, 0.0253646 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.06, 0 )
 
 [node name="machete" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 0.140774, 0, 0, 0, 0.140774, 0, 0, 0, 0.140774, 0, 0, 0 )
@@ -687,13 +687,13 @@ __meta__ = {
 
 [node name="StatsDisplay" type="Label" parent="CanvasLayer"]
 anchor_left = 0.169
-anchor_top = 0.148
+anchor_top = 0.098
 anchor_right = 0.169
-anchor_bottom = 0.148
+anchor_bottom = 0.098
 margin_left = 0.129517
-margin_top = 0.164864
+margin_top = -0.107399
 margin_right = 170.129
-margin_bottom = 75.1649
+margin_bottom = 74.8926
 custom_fonts/font = ExtResource( 22 )
 text = "HEALTH: 0
 AMMO: 0"
@@ -718,10 +718,10 @@ anims/hurt = SubResource( 16 )
 anims/start = SubResource( 17 )
 
 [node name="PickupInfo" type="Label" parent="CanvasLayer"]
-margin_left = 17.8381
-margin_top = 136.759
-margin_right = 369.838
-margin_bottom = 328.759
+margin_left = 88.2585
+margin_top = 132.264
+margin_right = 440.258
+margin_bottom = 324.264
 custom_fonts/font = SubResource( 18 )
 text = "Picked up Machinegun 
 Picked up Machinegun 
@@ -737,7 +737,6 @@ __meta__ = {
 wait_time = 2.0
 
 [node name="ShaderCRT" type="TextureRect" parent="CanvasLayer"]
-visible = false
 material = SubResource( 20 )
 anchor_right = 1.0
 anchor_bottom = 1.0

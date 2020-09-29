@@ -138,6 +138,7 @@ __meta__ = {
 }
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+visible = false
 navmesh = SubResource( 7 )
 
 [node name="BirdMonster" parent="Navigation" instance=ExtResource( 8 )]
