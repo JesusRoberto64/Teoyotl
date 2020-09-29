@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://enviromet/rawassets/blue stone_lowres.png" type="Texture" id=1]
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_texture = ExtResource( 1 )
+[ext_resource path="res://enviromet/assets/PsxMaterial01.tres" type="Material" id=1]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -14,7 +11,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 36,
-"material": SubResource( 2 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 24
