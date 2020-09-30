@@ -11,7 +11,7 @@ var cur_state = STATES.IDLE
 var player = null
 var path = []
 
-export var sight_angle = 45.0
+export var sight_angle = 90.0
 export var turn_speed = 360.0
 
 export var attack_angle = 5.0

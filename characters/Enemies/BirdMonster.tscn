@@ -12,7 +12,6 @@
 [ext_resource path="res://SFX/Chacters/hit1.wav" type="AudioStream" id=10]
 [ext_resource path="res://SFX/HitSound.gd" type="Script" id=11]
 
-
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 

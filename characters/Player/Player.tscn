@@ -411,6 +411,11 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.03595, 0 )
 shape = SubResource( 1 )
 
+[node name="Camera2" type="Camera" parent="."]
+transform = Transform( 0.995534, 0, -0.0944037, 0, 1, 0, 0.0944037, 0, 0.995534, 0.0252154, 1.28581, 2.52056 )
+current = true
+far = 91.1
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
 current = true
@@ -745,8 +750,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="ammo_changed" from="Camera/WeaponMannager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
-[connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
+[connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
 [connection signal="out_of_ammo" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/OutOfAmmoSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]
