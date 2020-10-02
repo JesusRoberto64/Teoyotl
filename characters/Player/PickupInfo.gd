@@ -18,9 +18,9 @@ func add_pickup_info(pickup_type,amount: int):
 		Pickup.PICKUP_TYPES.SHOTGUN_AMMO:
 			pickups_info.push_back("Picked up Shotgun Ammo " + str(amount))
 		Pickup.PICKUP_TYPES.ROCKET_LAUNCHER:
-			pickups_info.push_back("Picked up Rocket Launcher")
+			pickups_info.push_back("Picked up Magic Bow")
 		Pickup.PICKUP_TYPES.ROCKET_LAUNCHER_AMMO:
-			pickups_info.push_back("Picked up Rocket Launcher" + str(amount))
+			pickups_info.push_back("Picked up Magic Arrows " + str(amount))
 	while pickups_info.size() >= MAX_LINE:
 		pickups_info.pop_front()
 	update_display()

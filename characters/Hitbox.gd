@@ -12,3 +12,4 @@ func hurt(damage: int, dir: Vector3):
 	else:
 		emit_signal("hurt",damage, dir)
 	
+	

@@ -19,3 +19,4 @@ func fire():
 	get_tree().get_root().add_child(fireball_inst)
 	fireball_inst.global_transform = global_transform
 	fireball_inst.impact_damage = damage
+	

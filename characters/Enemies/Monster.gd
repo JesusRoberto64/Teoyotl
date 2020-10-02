@@ -56,18 +56,18 @@ func _process(delta):
 
 func set_state_idle():
 	cur_state = STATES.IDLE
-	anim_player.play("idle_loop")
+	anim_player.play("Idle-loop")
 
 func set_state_chase():
 	cur_state = STATES.CHASE
-	anim_player.play("walk_loop", 0.2)
+	anim_player.play("Run-loop", 0.2)
 
 func set_state_attack():
 	cur_state = STATES.ATTACK
 
 func set_state_dead():
 	cur_state = STATES.DEAD
-	anim_player.play("die")
+	anim_player.play("Death")
 	character_mover.freeze()
 	$CollisionShape.disabled = true
 
@@ -109,11 +109,12 @@ func hurt(damage: int, dir: Vector3):
 	if cur_state == STATES.IDLE:
 		set_state_chase()
 	health_mannager.hurt(damage, dir)
+	print (damage)
 	pass
 
 func start_attack():
 	can_attack = false
-	anim_player.play("attack",-1, attack_anim_speed_mod)
+	anim_player.play("Attack-loop",-1, attack_anim_speed_mod)
 	attack_timer.start()
 	#aimer.aim_at_pos(player.global_transform.origin + Vector3.UP)
 
