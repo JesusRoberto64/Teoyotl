@@ -11,4 +11,5 @@ func hurt(damage: int, dir: Vector3):
 		emit_signal("hurt",damage * critical_damage_multiplier, dir)
 	else:
 		emit_signal("hurt",damage, dir)
+		
 	
