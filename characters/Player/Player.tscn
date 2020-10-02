@@ -428,8 +428,9 @@ script = ExtResource( 4 )
 
 [node name="Machete" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
+visible = false
 script = ExtResource( 10 )
-damage = 20
+damage = 2
 ammo = -1
 attack_rate = 0.4
 
@@ -466,7 +467,6 @@ __meta__ = {
 
 [node name="MachineGun" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141876, 0.150195, 0.807911 )
-visible = false
 script = ExtResource( 10 )
 automatic = true
 attack_rate = 0.1

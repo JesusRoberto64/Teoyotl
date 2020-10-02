@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Teoyotl - Coyoli"
-run/main_scene="res://enviromet/ground.tscn"
+run/main_scene="res://Levels/Tlalocan.tscn"
 config/icon="res://icon.png"
 
 [display]

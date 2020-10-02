@@ -50,6 +50,7 @@ func _physics_process(delta):
 	if grounded:
 		velocity.y = -0.01
 		snap_vec = -body_to_move.get_floor_normal()
+		#print(snap_vec)
 		pass
 	if grounded and pressed_jump:
 		velocity.y = jump_force 
