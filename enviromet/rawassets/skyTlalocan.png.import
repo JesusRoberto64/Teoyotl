@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_spritesheet.png-69cf2f7bb9b848616a73d85898fc84ad.stex"
+path="res://.import/skyTlalocan.png-59a3dc75fc71b112c87bdcd80d58fa89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/fire_spritesheet.png"
-dest_files=[ "res://.import/fire_spritesheet.png-69cf2f7bb9b848616a73d85898fc84ad.stex" ]
+source_file="res://enviromet/rawassets/skyTlalocan.png"
+dest_files=[ "res://.import/skyTlalocan.png-59a3dc75fc71b112c87bdcd80d58fa89.stex" ]
 
 [params]
 
