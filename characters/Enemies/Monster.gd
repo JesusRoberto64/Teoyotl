@@ -87,7 +87,7 @@ func process_state_chase(delta):
 	if path.size() > 1:
 		goal_pos = path[1]
 	var dir = goal_pos - our_pos 
-	dir.y = 0
+	dir.y = 1
 	character_mover.set_move_vec(dir)
 	face_dir(dir,delta)
 

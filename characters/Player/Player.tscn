@@ -400,7 +400,7 @@ custom_defines = ""
 shader = SubResource( 19 )
 shader_param/scan_line_float = 480.0
 
-[node name="KinematicBody" type="KinematicBody" groups=[
+[node name="Player" type="KinematicBody" groups=[
 "player",
 ]]
 collision_layer = 6
@@ -428,7 +428,6 @@ script = ExtResource( 4 )
 
 [node name="Machete" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
-visible = false
 script = ExtResource( 10 )
 damage = 2
 ammo = -1
@@ -449,6 +448,7 @@ anims/idle = SubResource( 3 )
 
 [node name="DamageArea" parent="Camera/WeaponMannager/Weapons/Machete/BulletsEmitters" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0594419, 0.126012, -0.427688 )
+collision_mask = 18
 
 [node name="Crosshair" type="TextureRect" parent="Camera/WeaponMannager/Weapons/Machete"]
 modulate = Color( 1, 1, 1, 0.494118 )
@@ -628,14 +628,14 @@ anims/moving = SubResource( 11 )
 
 [node name="AlertAreaHearing" type="Area" parent="Camera/WeaponMannager"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponMannager/AlertAreaHearing"]
 shape = SubResource( 12 )
 
 [node name="AlertAreaLos" type="Area" parent="Camera/WeaponMannager"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape" type="CollisionShape" parent="Camera/WeaponMannager/AlertAreaLos"]
 shape = SubResource( 13 )
@@ -750,8 +750,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="ammo_changed" from="Camera/WeaponMannager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
-[connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
+[connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="out_of_ammo" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/OutOfAmmoSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]

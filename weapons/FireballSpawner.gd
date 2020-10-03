@@ -14,8 +14,11 @@ func set_bodies_to_exclude(_bodies_to_exclude: Array):
 
 
 func fire():
-	var fireball_inst = fireball.instance()
-	fireball_inst.set_bodies_to_exclude(bodies_to_exclude)
-	get_tree().get_root().add_child(fireball_inst)
-	fireball_inst.global_transform = global_transform
-	fireball_inst.impact_damage = damage
+	for i in range(3):
+		var fireball_inst = fireball.instance()
+		fireball_inst.set_bodies_to_exclude(bodies_to_exclude)
+		get_tree().get_root().add_child(fireball_inst)
+		fireball_inst.global_transform = global_transform 
+		fireball_inst.impact_damage = damage
+		fireball_inst.transform.origin += Vector3.LEFT * i 
+		#fireball_inst.position +=  Vector3.LEFT

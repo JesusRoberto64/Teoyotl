@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var speed = 20
-var impact_damage = 20
+var impact_damage = 40
 var exploded = false
 
 func _ready():
