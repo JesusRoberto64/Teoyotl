@@ -582,6 +582,7 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780897, 0.157459, 0.873379 )
 visible = false
 script = ExtResource( 10 )
+ammo = 5
 attack_rate = 1.0
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponMannager/Weapons/RocketLuncher"]
@@ -646,6 +647,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0869235 )
 [node name="CharcaterMover" parent="." instance=ExtResource( 2 )]
 
 [node name="HealthMannager" parent="." instance=ExtResource( 3 )]
+max_health = 50
 
 [node name="PickupMannager" type="Area" parent="."]
 collision_layer = 0

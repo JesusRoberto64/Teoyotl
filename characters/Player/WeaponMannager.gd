@@ -5,7 +5,7 @@ var slots_unlocked = {
 	WEAPONS_SLOTS.MACHETE: true,
 	WEAPONS_SLOTS.MACHINE_GUN: false,
 	WEAPONS_SLOTS.SHOTGUN: false,
-	WEAPONS_SLOTS.ROCKET_LAUNCHER: false,
+	WEAPONS_SLOTS.ROCKET_LAUNCHER: true,
 } 
 
 onready var anim_player = $AnimationPlayer

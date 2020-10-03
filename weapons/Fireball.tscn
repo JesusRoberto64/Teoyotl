@@ -73,7 +73,6 @@ billboard = 1
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics/Sprite3D"]
 autoplay = "Flicker"
