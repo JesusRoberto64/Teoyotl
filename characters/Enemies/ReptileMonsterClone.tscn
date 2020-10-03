@@ -28,7 +28,7 @@ height = 1.46882
 extents = Vector3( 0.689158, 0.621982, 0.471014 )
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.948694, 1.07981, 1.13608 )
+extents = Vector3( 0.948694, 0.771905, 1.13608 )
 
 [sub_resource type="BoxShape" id=7]
 extents = Vector3( 0.680709, 0.905269, 0.600128 )
@@ -165,7 +165,7 @@ bone_name = "body"
 [node name="Hitbox" parent="Graphics/Armature/Skeleton/Body" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="Graphics/Armature/Skeleton/Body/Hitbox"]
-transform = Transform( 0.231528, -5.73333e-08, 9.92565e-09, 1.07771e-08, 0.0104913, -0.280391, 5.69032e-08, 0.231291, 0.0127185, 9.88957e-08, 0.138752, 0.147245 )
+transform = Transform( 0.231528, -5.73333e-08, 9.92565e-09, 1.07771e-08, 0.0104913, -0.280391, 5.69032e-08, 0.231291, 0.0127185, 1.18134e-07, 0.135231, 0.0696352 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Graphics/Armature/Skeleton/Body/Hitbox"]
