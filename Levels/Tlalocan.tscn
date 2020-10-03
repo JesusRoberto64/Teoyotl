@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enviromet/Background/templo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/Enemies/ReptileMonster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Debug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enviromet/TileSetTlaloc/tlalocanPsx02.meshlib" type="MeshLibrary" id=5]
+[ext_resource path="res://characters/Enemies/BirdMonster.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enviromet/rawassets/skyTlalocan.png" type="Texture" id=7]
 [ext_resource path="res://Levels/forcefield.gd" type="Script" id=8]
 
@@ -142,6 +144,15 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
+[node name="ReptileMonster" parent="Navigationjar4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9626, 10.3225, -22.8731 )
+
+[node name="ReptileMonster2" parent="Navigationjar4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4348, 10.3225, -19.5794 )
+
+[node name="ReptileMonster3" parent="Navigationjar4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3766, 10.3225, -22.8731 )
+
 [node name="Spwner  3 reptils" type="Spatial" parent="Navigationjar4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2301, 10.4054, -18.9128 )
 
@@ -149,6 +160,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2301, 10.4054, -18.9128 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigationjar3"]
 navmesh = SubResource( 2 )
+
+[node name="ReptileMonster" parent="Navigationjar3" instance=ExtResource( 3 )]
+transform = Transform( -0.629049, 0, -0.777366, 0, 1, 0, 0.777366, 0, -0.629049, 22.72, 10.8328, 23.9656 )
+
+[node name="ReptileMonster2" parent="Navigationjar3" instance=ExtResource( 3 )]
+transform = Transform( -0.455638, 0, -0.890165, 0, 1, 0, 0.890165, 0, -0.455638, 27.417, 10.8328, 23.9656 )
+
+[node name="ReptileMonster3" parent="Navigationjar3" instance=ExtResource( 3 )]
+transform = Transform( -0.748528, 0, -0.663103, 0, 1, 0, 0.663103, 0, -0.748528, 27.417, 10.8328, 29.8323 )
+
+[node name="ReptileMonster4" parent="Navigationjar3" instance=ExtResource( 3 )]
+transform = Transform( -0.673026, 0, -0.739619, 0, 1, 0, 0.739619, 0, -0.673026, 21.8146, 10.8328, 29.8323 )
 
 [node name="EID" type="GridMap" parent="Navigationjar3"]
 mesh_library = ExtResource( 5 )
@@ -182,6 +205,15 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 1, 0 )
 }
 
+[node name="ReptileMonster" parent="NavigationJar" instance=ExtResource( 3 )]
+transform = Transform( -0.675449, 0, 0.737407, 0, 1, 0, -0.737407, 0, -0.675449, -18.9926, 6.64715, 22.3481 )
+
+[node name="ReptileMonster2" parent="NavigationJar" instance=ExtResource( 3 )]
+transform = Transform( -0.827463, 0, 0.56152, 0, 1, 0, -0.56152, 0, -0.827463, -15.8478, 5.18853, 21.8346 )
+
+[node name="ReptileMonster3" parent="NavigationJar" instance=ExtResource( 3 )]
+transform = Transform( -0.817296, 0, 0.576218, 0, 1, 0, -0.576218, 0, -0.817296, -16.551, 5.18853, 27.8609 )
+
 [node name="spoawner 3 reptiles" type="Spatial" parent="NavigationJar"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0819, 6.50431, 21.8168 )
 
@@ -201,6 +233,18 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
+
+[node name="ReptileMonster" parent=" NavigatorJar2" instance=ExtResource( 3 )]
+transform = Transform( 0.815471, 0, -0.578797, 0, 1, 0, 0.578797, 0, 0.815471, 18.6583, 8.70677, -24.0877 )
+
+[node name="ReptileMonster2" parent=" NavigatorJar2" instance=ExtResource( 3 )]
+transform = Transform( 0.596911, 0, -0.802307, 0, 1, 0, 0.802307, 0, 0.596911, 28.1644, 8.70677, -24.0877 )
+
+[node name="ReptileMonster3" parent=" NavigatorJar2" instance=ExtResource( 3 )]
+transform = Transform( 0.64419, 0, -0.764865, 0, 1, 0, 0.764865, 0, 0.64419, 28.1644, 8.70677, -15.6082 )
+
+[node name="BirdMonster" parent=" NavigatorJar2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4963, 6.59247, -22.5595 )
 
 [node name="spawner 4 reptiles" type="Spatial" parent=" NavigatorJar2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6993, 10.1841, -22.2957 )
@@ -247,6 +291,30 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
+
+[node name="BirdMonster" parent="NavigationMelee" instance=ExtResource( 6 )]
+transform = Transform( -0.986028, 0, 0.16658, 0, 1, 0, -0.16658, 0, -0.986028, -23.5374, 0.825312, -0.0771103 )
+
+[node name="BirdMonster6" parent="NavigationMelee" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7426, 0.825312, -0.0771098 )
+
+[node name="BirdMonster2" parent="NavigationMelee" instance=ExtResource( 6 )]
+transform = Transform( -0.0149043, 0, 0.999889, 0, 1, 0, -0.999889, 0, -0.0149043, -8.36199, 0, 0.404653 )
+
+[node name="BirdMonster3" parent="NavigationMelee" instance=ExtResource( 6 )]
+transform = Transform( -0.988263, 0, -0.152761, 0, 1, 0, 0.152761, 0, -0.988263, 0, 0, 14.8373 )
+
+[node name="BirdMonster4" parent="NavigationMelee" instance=ExtResource( 6 )]
+transform = Transform( 0.998206, 0, -0.059881, 0, 1, 0, 0.059881, 0, 0.998206, 0, 0, -8.44316 )
+
+[node name="BirdMonster5" parent="NavigationMelee" instance=ExtResource( 6 )]
+transform = Transform( -0.148224, 0, -0.988954, 0, 1, 0, 0.988954, 0, -0.148224, 11.0056, 0, 0.404653 )
+
+[node name="ReptileMonster" parent="NavigationMelee" instance=ExtResource( 3 )]
+transform = Transform( -0.676452, 0, 0.736487, 0, 1, 0, -0.736487, 0, -0.676452, 23.8937, 0.407688, 14.4701 )
+
+[node name="ReptileMonster2" parent="NavigationMelee" instance=ExtResource( 3 )]
+transform = Transform( 0.90502, 0, 0.425369, 0, 1, 0, -0.425369, 0, 0.90502, 18.8882, 0, 22.6983 )
 
 [node name="6 birds 2 reptiles" type="Spatial" parent="NavigationMelee"]
 
