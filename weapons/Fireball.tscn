@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://weapons/raw_assets/fire_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://weapons/raw_assets/ne.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Fireball.gd" type="Script" id=2]
 [ext_resource path="res://Effects/circle32.png" type="Texture" id=3]
 
