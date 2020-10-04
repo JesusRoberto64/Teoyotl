@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/woodlogs_lowres.png-cccf56b446f7c8736c4fe722dd2e892d.stex"
+path="res://.import/cloth_lowres.png-3f66e3bc41aef189f07cc99e57ee2c05.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/Teoyotl Weapons/Teoyotl Weapon Text/woodlogs_lowres.png"
-dest_files=[ "res://.import/woodlogs_lowres.png-cccf56b446f7c8736c4fe722dd2e892d.stex" ]
+source_file="res://weapons/raw_assets/Teoyotl Weapons/Teoyotl Weapon Text/cloth_lowres.png"
+dest_files=[ "res://.import/cloth_lowres.png-3f66e3bc41aef189f07cc99e57ee2c05.stex" ]
 
 [params]
 
