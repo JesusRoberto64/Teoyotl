@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
@@ -28,7 +28,7 @@
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=26]
 [ext_resource path="res://SFX/Foleys/balazo2.wav" type="AudioStream" id=27]
 [ext_resource path="res://SFX/Foleys/sinbala.wav" type="AudioStream" id=28]
-[ext_resource path="res://UI/800X600blank.png" type="Texture" id=29]
+[ext_resource path="res://Effects/ShaderCRT.tscn" type="PackedScene" id=29]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/aztec blade 03.glb" type="PackedScene" id=30]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Old Bow.tscn" type="PackedScene" id=31]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Magic Arrow.tscn" type="PackedScene" id=32]
@@ -386,48 +386,6 @@ tracks/0/keys = {
 size = 10
 font_data = ExtResource( 25 )
 
-[sub_resource type="Shader" id=19]
-code = "shader_type canvas_item;
-
-uniform float scan_line_float : hint_range(0, 1080) = 50.0;
-
-vec2 uv_curve(vec2 uv){
-	
-	uv = (uv - 0.5) * 2.0;
-	
-	uv.x *= 1.0 + pow(abs(uv.y) / 4.0, 2.0);
-	uv.y *= 1.0 + pow(abs(uv.x) / 5.0, 2.0);
-	
-	uv /= 1.2;
-	
-	uv = (uv / 2.0) + 0.5;  
-	
-	return uv;
-}
-
-void fragment(){
-	//vec4 color = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV));
-	float PI = 3.14159;
-	
-	float r = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*0.0),0.0).r;
-	float g = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*1.5),0.0).g;
-	float b = texture(SCREEN_TEXTURE,uv_curve(SCREEN_UV) + vec2(SCREEN_PIXEL_SIZE.x*-1.5),0.0).b;
-	
-	float s = sin(uv_curve(SCREEN_UV).y * scan_line_float * PI);
-	s = (s * 0.5 + 0.5) * 0.9 + 0.1;
-	
-	vec4 scan_line = vec4(vec3(pow(s,0.25)), 1.0);
-	
-	COLOR = vec4(r,g,b,1.0) * scan_line;
-	
-	//COLOR = color;
-}"
-custom_defines = ""
-
-[sub_resource type="ShaderMaterial" id=20]
-shader = SubResource( 19 )
-shader_param/scan_line_float = 480.0
-
 [node name="Player" type="KinematicBody" groups=[
 "player",
 ]]
@@ -784,14 +742,7 @@ __meta__ = {
 [node name="RmoveInfoTimer" type="Timer" parent="CanvasLayer/PickupInfo"]
 wait_time = 2.0
 
-[node name="ShaderCRT" type="TextureRect" parent="CanvasLayer"]
-material = SubResource( 20 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 29 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ShaderCRT" parent="CanvasLayer" instance=ExtResource( 29 )]
 
 [node name="Audio" type="Spatial" parent="."]
 

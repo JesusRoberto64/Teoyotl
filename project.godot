@@ -28,6 +28,7 @@ _global_script_class_icons={
 
 config/name="Teoyotl - Coyoli"
 run/main_scene="res://MainMenu.tscn"
+boot_splash/image="res://assador.png"
 config/icon="res://icon.png"
 
 [display]
