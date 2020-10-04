@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ne.png-7e2195025f94098bef254741e915381c.stex"
+path="res://.import/obisidian_lowres.png-34b7305d36bd9178acc7aab490f575a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/ne.png"
-dest_files=[ "res://.import/ne.png-7e2195025f94098bef254741e915381c.stex" ]
+source_file="res://weapons/raw_assets/Teoyotl Weapons/Teoyotl Weapon Text/obisidian_lowres.png"
+dest_files=[ "res://.import/obisidian_lowres.png-34b7305d36bd9178acc7aab490f575a4.stex" ]
 
 [params]
 

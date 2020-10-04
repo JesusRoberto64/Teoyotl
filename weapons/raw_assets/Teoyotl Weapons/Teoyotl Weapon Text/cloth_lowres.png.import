@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ne.png-7e2195025f94098bef254741e915381c.stex"
+path="res://.import/cloth_lowres.png-3f66e3bc41aef189f07cc99e57ee2c05.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/ne.png"
-dest_files=[ "res://.import/ne.png-7e2195025f94098bef254741e915381c.stex" ]
+source_file="res://weapons/raw_assets/Teoyotl Weapons/Teoyotl Weapon Text/cloth_lowres.png"
+dest_files=[ "res://.import/cloth_lowres.png-3f66e3bc41aef189f07cc99e57ee2c05.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ne.png-7e2195025f94098bef254741e915381c.stex"
+path="res://.import/RayaX.png-7118497ccfee4ede9e0eec77bf897fd0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/ne.png"
-dest_files=[ "res://.import/ne.png-7e2195025f94098bef254741e915381c.stex" ]
+source_file="res://Effects/raw_assets/RayaX.png"
+dest_files=[ "res://.import/RayaX.png-7118497ccfee4ede9e0eec77bf897fd0.stex" ]
 
 [params]
 

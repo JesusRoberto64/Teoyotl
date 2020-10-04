@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ne.png-7e2195025f94098bef254741e915381c.stex"
+path="res://.import/sheldleather.png-0f541c6d1ea344228b92bc5e871d51c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/ne.png"
-dest_files=[ "res://.import/ne.png-7e2195025f94098bef254741e915381c.stex" ]
+source_file="res://weapons/raw_assets/Teoyotl Weapons/Teoyotl Weapon Text/sheldleather.png"
+dest_files=[ "res://.import/sheldleather.png-0f541c6d1ea344228b92bc5e871d51c7.stex" ]
 
 [params]
 

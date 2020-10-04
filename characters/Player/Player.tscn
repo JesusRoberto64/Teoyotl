@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://SFX/Foleys/balazo2.wav" type="AudioStream" id=27]
 [ext_resource path="res://SFX/Foleys/sinbala.wav" type="AudioStream" id=28]
 [ext_resource path="res://UI/800X600blank.png" type="Texture" id=29]
+[ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/aztec blade 03.glb" type="PackedScene" id=30]
+[ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Old Bow.tscn" type="PackedScene" id=31]
+[ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Magic Arrow.tscn" type="PackedScene" id=32]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -214,6 +217,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -61.944, 0, 0 ), Vector3( -61.944, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Graphics/Arrow magic:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.126627, -0.0926179, -0.58853 ), Vector3( 0.0389814, -0.112871, 2.16987 ), Vector3( 0.0389814, -0.112871, 2.16987 ), Vector3( 0.126627, -0.0926179, -0.58853 ) ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "idle"
@@ -240,6 +255,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Graphics/Arrow magic:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.126627, -0.0926179, -0.58853 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -428,6 +455,7 @@ script = ExtResource( 4 )
 
 [node name="Machete" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
+visible = false
 script = ExtResource( 10 )
 damage = 2
 ammo = -1
@@ -438,6 +466,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.06, 0 )
 
 [node name="machete" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 0.140774, 0, 0, 0, 0.140774, 0, 0, 0, 0.140774, 0, 0, 0 )
+visible = false
+
+[node name="aztec blade 03" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 30 )]
+transform = Transform( -4.48143e-09, 4.48144e-09, 0.102523, 0.102523, -4.48143e-09, 4.48143e-09, 4.48144e-09, 0.102523, -4.48143e-09, 4.47035e-08, 0.0473676, -0.0613795 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponMannager/Weapons/Machete"]
 autoplay = "idle"
@@ -467,6 +499,7 @@ __meta__ = {
 
 [node name="MachineGun" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141876, 0.150195, 0.807911 )
+visible = false
 script = ExtResource( 10 )
 automatic = true
 attack_rate = 0.1
@@ -580,24 +613,32 @@ __meta__ = {
 
 [node name="RocketLuncher" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780897, 0.157459, 0.873379 )
-visible = false
 script = ExtResource( 10 )
-ammo = 5
+ammo = 1
 attack_rate = 1.0
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponMannager/Weapons/RocketLuncher"]
+transform = Transform( 1, 0, 0, 0, 0.470334, 0.882488, 0, -0.882488, 0.470334, 0, 0.027573, 0.0146954 )
 
 [node name="rocketlauncher" parent="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics" instance=ExtResource( 8 )]
 transform = Transform( 0.153151, 0, 0, 0, 0.153151, 0, 0, 0, 0.153151, 0, 0, 0 )
+visible = false
 
 [node name="MuzzleFlash" type="Spatial" parent="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0823474, -0.273159 )
+visible = false
 script = ExtResource( 11 )
 
 [node name="OmniLight" type="OmniLight" parent="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash"]
 
 [node name="muzzleflash2" parent="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" instance=ExtResource( 16 )]
 transform = Transform( -0.193504, 0, -6.30517e-08, 0, 0.193504, 0, 6.30517e-08, 0, -0.193504, 0, 0, 0 )
+
+[node name="Old Bow2" parent="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics" instance=ExtResource( 31 )]
+transform = Transform( 0.0280227, 0.0627389, -0.408638, 0.412927, 0.0158619, 0.0307522, 0.0202984, -0.40929, -0.0614471, 0.127602, -0.026341, -0.34585 )
+
+[node name="Arrow magic" parent="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics" instance=ExtResource( 32 )]
+transform = Transform( 0.724115, 0, 0, 0, 2.15803e-08, 0.724115, 0, -0.724115, 2.15803e-08, 0.126627, -0.0926179, -0.58853 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponMannager/Weapons/RocketLuncher"]
 anims/attack = SubResource( 8 )
@@ -757,6 +798,7 @@ __meta__ = {
 [connection signal="out_of_ammo" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/OutOfAmmoSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/Shotgun" to="Camera/WeaponMannager/Weapons/Shotgun/Graphics/MuzzleFlash" method="flash"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/MuzzleFlash" method="flash"]
+[connection signal="out_of_ammo" from="Camera/WeaponMannager/Weapons/RocketLuncher" to="Camera/WeaponMannager/Weapons/RocketLuncher/Graphics/Arrow magic" method="hide"]
 [connection signal="movement_info" from="CharcaterMover" to="Camera/WeaponMannager" method="update_animation"]
 [connection signal="dead" from="HealthMannager" to="CanvasLayer/RestartMessage" method="show"]
 [connection signal="healed" from="HealthMannager" to="CanvasLayer/HealthEffects/AnimationPlayer" method="play" binds= [ "Heal" ]]

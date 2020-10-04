@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ne.png-7e2195025f94098bef254741e915381c.stex"
+path="res://.import/woodold_lowres.png-1192ceb391c58b0df3111925f566b6cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapons/raw_assets/ne.png"
-dest_files=[ "res://.import/ne.png-7e2195025f94098bef254741e915381c.stex" ]
+source_file="res://weapons/raw_assets/Teoyotl Weapons/Teoyotl Weapon Text/woodold_lowres.png"
+dest_files=[ "res://.import/woodold_lowres.png-1192ceb391c58b0df3111925f566b6cb.stex" ]
 
 [params]
 

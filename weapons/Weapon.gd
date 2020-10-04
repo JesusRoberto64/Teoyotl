@@ -19,6 +19,7 @@ var can_attack = true
 signal fired
 signal out_of_ammo
 
+
 func _ready():
 	attack_timer = Timer.new()
 	attack_timer.wait_time = attack_rate
@@ -48,6 +49,7 @@ func attack(attack_input_just_pressed : bool, attack_input_held : bool):
 	
 	if ammo > 0:
 		ammo -= 1
+	
 	
 	var start_Traform = bullet_emitters_base.global_transform
 	bullet_emitters_base.global_transform = fire_point.global_transform
