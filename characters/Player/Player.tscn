@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
@@ -22,7 +22,7 @@
 [ext_resource path="res://weapons/crosshair/crosshair001.png" type="Texture" id=20]
 [ext_resource path="res://characters/Player/PickupMannager.gd" type="Script" id=21]
 [ext_resource path="res://UI/KLEITENDynFont.tres" type="DynamicFont" id=22]
-[ext_resource path="res://UI/crypt_domino_1b.png" type="Texture" id=23]
+[ext_resource path="res://Pickups/raw_assets/cover.png" type="Texture" id=23]
 [ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=24]
 [ext_resource path="res://UI/KLEINTEN.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=26]
@@ -32,6 +32,7 @@
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/aztec blade 03.glb" type="PackedScene" id=30]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Old Bow.tscn" type="PackedScene" id=31]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Magic Arrow.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Music/TLALOCAN_COMBAT_THEME_teoyotl.ogg" type="AudioStream" id=33]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -712,7 +713,6 @@ margin_top = -18.0
 margin_right = 142.0
 margin_bottom = 18.0
 custom_fonts/font = ExtResource( 22 )
-text = "Press \"R\" to restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -792,6 +792,12 @@ texture = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Audio" type="Spatial" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 33 )
+autoplay = true
 [connection signal="ammo_changed" from="Camera/WeaponMannager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
