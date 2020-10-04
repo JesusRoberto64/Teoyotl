@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://SFX/Foleys/balazo2.wav" type="AudioStream" id=27]
 [ext_resource path="res://SFX/Foleys/sinbala.wav" type="AudioStream" id=28]
 [ext_resource path="res://UI/800X600blank.png" type="Texture" id=29]
+[ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/aztec blade 03.glb" type="PackedScene" id=30]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -428,6 +429,7 @@ script = ExtResource( 4 )
 
 [node name="Machete" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
+visible = false
 script = ExtResource( 10 )
 damage = 2
 ammo = -1
@@ -438,6 +440,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.06, 0 )
 
 [node name="machete" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 0.140774, 0, 0, 0, 0.140774, 0, 0, 0, 0.140774, 0, 0, 0 )
+visible = false
+
+[node name="aztec blade 03" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 30 )]
+transform = Transform( -4.48143e-09, 4.48144e-09, 0.102523, 0.102523, -4.48143e-09, 4.48143e-09, 4.48144e-09, 0.102523, -4.48143e-09, 4.47035e-08, 0.0473676, -0.0613795 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponMannager/Weapons/Machete"]
 autoplay = "idle"
@@ -467,6 +473,7 @@ __meta__ = {
 
 [node name="MachineGun" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141876, 0.150195, 0.807911 )
+visible = false
 script = ExtResource( 10 )
 automatic = true
 attack_rate = 0.1
@@ -580,7 +587,6 @@ __meta__ = {
 
 [node name="RocketLuncher" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780897, 0.157459, 0.873379 )
-visible = false
 script = ExtResource( 10 )
 ammo = 5
 attack_rate = 1.0
