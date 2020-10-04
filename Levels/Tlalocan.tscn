@@ -1,11 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://characters/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enviromet/Background/templo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/Enemies/ReptileMonster.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Pickups/HealthPickup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Debug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enviromet/TileSetTlaloc/tlalocanPsx02.meshlib" type="MeshLibrary" id=5]
-[ext_resource path="res://characters/Enemies/BirdMonster.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enviromet/rawassets/skyTlalocan.png" type="Texture" id=7]
 [ext_resource path="res://Levels/forcefield.gd" type="Script" id=8]
 [ext_resource path="res://Pickups/RocketLauncherPickup.tscn" type="PackedScene" id=9]
@@ -133,6 +132,12 @@ albedo_texture = ExtResource( 7 )
 [node name="RocketLauncherPickup" parent="Enviroment" instance=ExtResource( 9 )]
 transform = Transform( 1.23808, 0, 0, 0, 1.23808, 0, 0, 0, 1.23808, 0.788036, 7.47752, -25.5105 )
 
+[node name="HealthPickup" parent="Enviroment" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3155, 1.4424, 3.42902 )
+
+[node name="HealthPickup2" parent="Enviroment" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3154, 1.4424, 3.42902 )
+
 [node name="Navigationjar4" type="Navigation" parent="."]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigationjar4"]
@@ -143,21 +148,21 @@ mesh_library = ExtResource( 5 )
 cell_size = Vector3( 4, 4, 4 )
 cell_scale = 2.0
 data = {
-"cells": PoolIntArray( 131065, 65529, -535429120, 131066, 65529, 1441792, 131067, 65529, -535429120, 131068, 65529, -535429120, 131069, 65529, -535429120, 196602, 65529, -535822332, 196603, 65529, -536870908, 196604, 65529, -535822332, 196605, 65529, -536870908, 131065, 65530, -535429120, 131066, 65530, -535429120, 131067, 65530, -535429120, 131068, 65530, -535429120, 131069, 65530, -535429120, 196602, 65530, -536215548, 196603, 65530, -535429116, 196604, 65530, -536215548, 196605, 65530, -535429116, 131065, 65531, -535429120, 131066, 65531, -535429120, 131067, 65531, -535429120, 131068, 65531, -535429120, 131069, 65531, -535429118, 196602, 65531, -535822332, 196603, 65531, -536870908, 131065, 65532, -535429120, 131066, 65532, -535429120, 131067, 65532, -535429120, 131068, 65532, -536215550, 131069, 65532, -535429119, 196602, 65532, -536215548, 196603, 65532, -535429116, 131065, 65533, 1441792, 131066, 65533, 1441799, 131067, 65533, 1441797 )
+"cells": PoolIntArray( 131065, 65529, -535429120, 131066, 65529, -535429120, 131067, 65529, -535429120, 131068, 65529, -535429120, 131069, 65529, 1441792, 196602, 65529, -535822332, 196603, 65529, -536870908, 196604, 65529, 1048580, 196605, 65529, 4, 131065, 65530, 1441792, 131066, 65530, 1441792, 131067, 65530, 1441792, 131068, 65530, -535429120, 131069, 65530, -535429120, 196602, 65530, -536215548, 196603, 65530, 1441796, 196604, 65530, -536215548, 196605, 65530, -535429116, 131065, 65531, 1441792, 131066, 65531, 1441792, 131067, 65531, -535429120, 131068, 65531, 1441792, 131069, 65531, -535429118, 196602, 65531, 1048580, 196603, 65531, -536870908, 131065, 65532, 538312704, 131066, 65532, -535429120, 131067, 65532, 1441792, 131068, 65532, 655362, 131069, 65532, -535429119, 196602, 65532, 655364, 196603, 65532, 538312708, 131065, 65533, 1441792, 131066, 65533, 1441799, 131067, 65533, 1441797 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="ReptileMonster" parent="Navigationjar4" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9626, 10.3225, -22.8731 )
+[node name="JarTlaloque" parent="Navigationjar4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5123, 12.0757, -16.265 )
 
-[node name="ReptileMonster2" parent="Navigationjar4" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4348, 10.3225, -19.5794 )
+[node name="JarTlaloque2" parent="Navigationjar4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6882, 10.4033, -22.4807 )
 
-[node name="ReptileMonster3" parent="Navigationjar4" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3766, 10.3225, -22.8731 )
+[node name="JarTlaloque3" parent="Navigationjar4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.455, 10.4033, -22.4807 )
 
 [node name="Spwner  3 reptils" type="Spatial" parent="Navigationjar4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2301, 10.4054, -18.9128 )
@@ -167,24 +172,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2301, 10.4054, -18.9128 )
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigationjar3"]
 navmesh = SubResource( 2 )
 
-[node name="ReptileMonster" parent="Navigationjar3" instance=ExtResource( 3 )]
-transform = Transform( -0.629049, 0, -0.777366, 0, 1, 0, 0.777366, 0, -0.629049, 22.72, 10.8328, 23.9656 )
-
-[node name="ReptileMonster2" parent="Navigationjar3" instance=ExtResource( 3 )]
-transform = Transform( -0.455638, 0, -0.890165, 0, 1, 0, 0.890165, 0, -0.455638, 27.417, 10.8328, 23.9656 )
-
-[node name="ReptileMonster3" parent="Navigationjar3" instance=ExtResource( 3 )]
-transform = Transform( -0.748528, 0, -0.663103, 0, 1, 0, 0.663103, 0, -0.748528, 27.417, 10.8328, 29.8323 )
-
-[node name="ReptileMonster4" parent="Navigationjar3" instance=ExtResource( 3 )]
-transform = Transform( -0.673026, 0, -0.739619, 0, 1, 0, 0.739619, 0, -0.673026, 21.8146, 10.8328, 29.8323 )
-
 [node name="EID" type="GridMap" parent="Navigationjar3"]
 mesh_library = ExtResource( 5 )
 cell_size = Vector3( 4, 4, 4 )
 cell_scale = 2.0
 data = {
-"cells": PoolIntArray( 65541, 3, 655360, 65542, 3, 655360, 65543, 3, 655360, 131078, 3, 1048580, 131079, 3, 4, 65540, 4, 655360, 65541, 4, 655360, 65542, 4, 655360, 65543, 4, 655360, 131078, 4, 655364, 131079, 4, 1441796, 65540, 5, 655360, 65541, 5, 655360, 65542, 5, 655360, 65543, 5, 655360, 131076, 5, 1048580, 131077, 5, 4, 131078, 5, 1048580, 131079, 5, 4, 65539, 6, 655360, 65540, 6, 655360, 65541, 6, 655360, 65542, 6, 655360, 65543, 6, 655360, 131076, 6, 655364, 131077, 6, 1441796, 131078, 6, 655364, 131079, 6, 1441796, 65539, 7, 655360, 65540, 7, 655360, 65541, 7, -1609957376, 65542, 7, 655360, 65543, 7, 655360, 131076, 7, 1048580, 131077, 7, 4, 131078, 7, -1072693244, 131079, 7, 4, 65539, 8, 655360, 65540, 8, 655360, 65541, 8, 655360, 65542, 8, 655360, 65543, 8, 655360, 131076, 8, 655364, 131077, 8, 1441796, 131078, 8, 655364, 131079, 8, 1441796 )
+"cells": PoolIntArray( 65541, 3, 655360, 65542, 3, 655360, 65543, 3, 655360, 131078, 3, 1048580, 131079, 3, 4, 65540, 4, 655360, 65541, 4, 655360, 65542, 4, -1609957376, 65543, 4, 655360, 131078, 4, 655364, 131079, 4, 1441796, 65540, 5, 655360, 65541, 5, 655360, 65542, 5, 655360, 65543, 5, 655360, 131076, 5, 1048580, 131077, 5, 4, 131078, 5, 1048580, 131079, 5, 4, 65539, 6, 655360, 65540, 6, 655360, 65541, 6, -1609957376, 65542, 6, 655360, 65543, 6, 655360, 131076, 6, 655364, 131077, 6, 1441796, 131078, 6, 655364, 131079, 6, 1441796, 65539, 7, 655360, 65540, 7, 655360, 65541, 7, -1609957376, 65542, 7, -1609957376, 65543, 7, 655360, 131076, 7, 1048580, 131077, 7, 4, 131078, 7, 1048580, 131079, 7, 4, 65539, 8, 655360, 65540, 8, 655360, 65541, 8, 655360, 65542, 8, 655360, 65543, 8, 655360, 131076, 8, 655364, 131077, 8, 1441796, 131078, 8, 655364, 131079, 8, 1441796 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -193,6 +186,18 @@ __meta__ = {
 
 [node name="Spwner  4  reptils" type="Spatial" parent="Navigationjar3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.288, 10.4107, 25.6204 )
+
+[node name="JarTlaloque5" parent="Navigationjar3" instance=ExtResource( 10 )]
+transform = Transform( -0.662202, 0, -0.749326, 0, 1, 0, 0.749326, 0, -0.662202, 25.8253, 10.6864, 30.729 )
+
+[node name="JarTlaloque6" parent="Navigationjar3" instance=ExtResource( 10 )]
+transform = Transform( -0.662202, 0, -0.749326, 0, 1, 0, 0.749326, 0, -0.662202, 22.753, 10.6864, 25.7929 )
+
+[node name="JarTlaloque7" parent="Navigationjar3" instance=ExtResource( 10 )]
+transform = Transform( -0.662202, 0, -0.749326, 0, 1, 0, 0.749326, 0, -0.662202, 18.9615, 10.6864, 24.5324 )
+
+[node name="JarTlaloque8" parent="Navigationjar3" instance=ExtResource( 10 )]
+transform = Transform( -0.662202, 0, -0.749326, 0, 1, 0, 0.749326, 0, -0.662202, 19.0778, 10.6864, 25.511 )
 
 [node name="NavigationJar" type="Navigation" parent="."]
 
@@ -204,24 +209,27 @@ mesh_library = ExtResource( 5 )
 cell_size = Vector3( 4, 4, 4 )
 cell_scale = 2.0
 data = {
-"cells": PoolIntArray( 131065, 3, 1048580, 131066, 3, 4, 131067, 3, 1048580, 131068, 3, 4, 131065, 4, 655364, 131066, 4, 1441796, 131067, 4, -1073086460, 131068, 4, 1441796, 131065, 5, 1048580, 131066, 5, 4, 131067, 5, 1048580, 131068, 5, 4, 131065, 6, 655364, 131066, 6, 1441796, 131067, 6, 655364, 131068, 6, 1441796, 131069, 6, 6, 131065, 7, 1048580, 131066, 7, 4, 131067, 7, 1048580, 131068, 7, 4, 131069, 7, 5, 131065, 8, 655364, 131066, 8, 1441796, 131067, 8, 655364, 131068, 8, 1441796, 131069, 8, 5, 65530, 9, 0, 65531, 9, 0 )
+"cells": PoolIntArray( 131065, 3, 1048580, 131066, 3, 4, 131067, 3, 1048580, 131068, 3, 4, 131065, 4, 655364, 131066, 4, -1609170940, 131067, 4, 655364, 131068, 4, 1441796, 131065, 5, 1048580, 131066, 5, 4, 131067, 5, 1048580, 131068, 5, -1610612732, 131065, 6, 655364, 131066, 6, 1441796, 131067, 6, 655364, 131068, 6, 1441796, 131069, 6, 6, 131065, 7, 1048580, 131066, 7, 4, 131067, 7, -1609564156, 131068, 7, 4, 131069, 7, 5, 131065, 8, 655364, 131066, 8, 1441796, 131067, 8, 655364, 131068, 8, 1441796, 131069, 8, 5, 65530, 9, 0, 65531, 9, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 1, 0 )
 }
 
-[node name="ReptileMonster" parent="NavigationJar" instance=ExtResource( 3 )]
-transform = Transform( -0.675449, 0, 0.737407, 0, 1, 0, -0.737407, 0, -0.675449, -18.9926, 6.64715, 22.3481 )
-
-[node name="ReptileMonster2" parent="NavigationJar" instance=ExtResource( 3 )]
-transform = Transform( -0.827463, 0, 0.56152, 0, 1, 0, -0.56152, 0, -0.827463, -15.8478, 5.18853, 21.8346 )
-
-[node name="ReptileMonster3" parent="NavigationJar" instance=ExtResource( 3 )]
-transform = Transform( -0.817296, 0, 0.576218, 0, 1, 0, -0.576218, 0, -0.817296, -16.551, 5.18853, 27.8609 )
-
 [node name="spoawner 3 reptiles" type="Spatial" parent="NavigationJar"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0819, 6.50431, 21.8168 )
+
+[node name="JarTlaloque" parent="NavigationJar" instance=ExtResource( 10 )]
+transform = Transform( -0.665921, 0, 0.746022, 0, 1, 0, -0.746022, 0, -0.665921, -20.6797, 5.96817, 22.674 )
+
+[node name="JarTlaloque2" parent="NavigationJar" instance=ExtResource( 10 )]
+transform = Transform( -0.665921, 0, 0.746022, 0, 1, 0, -0.746022, 0, -0.665921, -18.9146, 5.96817, 22.674 )
+
+[node name="JarTlaloque3" parent="NavigationJar" instance=ExtResource( 10 )]
+transform = Transform( -0.665921, 0, 0.746022, 0, 1, 0, -0.746022, 0, -0.665921, -17.2154, 5.96817, 19.0578 )
+
+[node name="JarTlaloque4" parent="NavigationJar" instance=ExtResource( 10 )]
+transform = Transform( -0.665921, 0, 0.746022, 0, 1, 0, -0.746022, 0, -0.665921, -18.2009, 5.96817, 19.0578 )
 
 [node name=" NavigatorJar2" type="Navigation" parent="."]
 
@@ -240,20 +248,20 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="ReptileMonster" parent=" NavigatorJar2" instance=ExtResource( 3 )]
-transform = Transform( 0.815471, 0, -0.578797, 0, 1, 0, 0.578797, 0, 0.815471, 18.6583, 8.70677, -24.0877 )
+[node name="JarTlaloque" parent=" NavigatorJar2" instance=ExtResource( 10 )]
+transform = Transform( 0.815471, 0, -0.578797, 0, 1, 0, 0.578797, 0, 0.815471, 18.211, 7.4077, -23.2238 )
 
-[node name="ReptileMonster2" parent=" NavigatorJar2" instance=ExtResource( 3 )]
-transform = Transform( 0.596911, 0, -0.802307, 0, 1, 0, 0.802307, 0, 0.596911, 28.1644, 8.70677, -24.0877 )
+[node name="JarTlaloque2" parent=" NavigatorJar2" instance=ExtResource( 10 )]
+transform = Transform( 0.815471, 0, -0.578797, 0, 1, 0, 0.578797, 0, 0.815471, 27.0978, 9.15755, -23.2238 )
 
-[node name="ReptileMonster3" parent=" NavigatorJar2" instance=ExtResource( 3 )]
-transform = Transform( 0.64419, 0, -0.764865, 0, 1, 0, 0.764865, 0, 0.64419, 28.1644, 8.70677, -15.6082 )
-
-[node name="BirdMonster" parent=" NavigatorJar2" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4963, 6.59247, -22.5595 )
+[node name="JarTlaloque3" parent=" NavigatorJar2" instance=ExtResource( 10 )]
+transform = Transform( 0.815471, 0, -0.578797, 0, 1, 0, 0.578797, 0, 0.815471, 27.0978, 9.15755, -17.556 )
 
 [node name="spawner 4 reptiles" type="Spatial" parent=" NavigatorJar2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6993, 10.1841, -22.2957 )
+
+[node name="BladeTlaloque" parent=" NavigatorJar2" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7818, 6.5744, -21.5083 )
 
 [node name="NavigationMelee" type="Navigation" parent="."]
 
@@ -291,44 +299,38 @@ cell_size = Vector3( 4, 4, 4 )
 cell_scale = 2.0
 collision_mask = 0
 data = {
-"cells": PoolIntArray( 3, 0, 1048582, 4, 0, 1048583, 65532, 0, 1441799, 65533, 0, 1441798, 65541, 0, 537919494, 65542, 0, 1048581, 65543, 0, 1048583, 131065, 0, 1441799, 131066, 0, 1441797, 131067, 0, 1441798, 3, 1, 1048582, 4, 1, 1048583, 65532, 1, 1075183623, 65533, 1, 1441798, 65541, 1, 1048582, 65542, 1, 1074790405, 65543, 1, 1048583, 131065, 1, 1441799, 131066, 1, 1441797, 131067, 1, 1441798, 3, 2, 1048582, 4, 2, 1074790407, 65532, 2, 1441799, 65533, 2, 1441798, 65541, 2, 1074790406, 65542, 2, 1048581, 65543, 2, 1048583, 131065, 2, 1441799, 131066, 2, 1441797, 131067, 2, 538312710, 1, 4, 6, 2, 4, 536870918, 65534, 4, 6, 65535, 4, 6, 1, 5, 7, 2, 5, 7, 65534, 5, 7, 65535, 5, 7, 65536, 6, 6, 65537, 6, 6, 65538, 6, 6, 131070, 6, 6, 131071, 6, 536870918, 65536, 7, 655365, 65537, 7, 655365, 65538, 7, 537526277, 131070, 7, 655365, 131071, 7, 655365, 65536, 8, 7, 65537, 8, 7, 65538, 8, 1073741831, 131070, 8, 536870919, 131071, 8, 7, 65536, 65528, 655367, 65537, 65528, 655367, 65538, 65528, 1074397191, 131070, 65528, 655367, 131071, 65528, 655367, 65536, 65529, 536870917, 65537, 65529, 5, 65538, 65529, 5, 131070, 65529, 5, 131071, 65529, 5, 65536, 65530, 655366, 65537, 65530, 655366, 65538, 65530, 655366, 131070, 65530, 655366, 131071, 65530, 655366, 1, 65531, 655367, 2, 65531, 537526279, 65534, 65531, 655367, 65535, 65531, 655367, 1, 65532, 655366, 2, 65532, 655366, 65534, 65532, 655366, 65535, 65532, 655366, 3, 65534, 537919494, 4, 65534, 1048583, 65532, 65534, 1441799, 65533, 65534, 1441798, 65541, 65534, 1048582, 65542, 65534, 1048581, 65543, 65534, 1048583, 131065, 65534, 538312711, 131066, 65534, 1441797, 131067, 65534, 1075183622, 3, 65535, 537919494, 4, 65535, 1048583, 65532, 65535, 1441799, 65533, 65535, 1441798, 65541, 65535, 1048582, 65542, 65535, 1048581, 65543, 65535, 1048583, 131065, 65535, 1441799, 131066, 65535, 1441797, 131067, 65535, 1441798 )
+"cells": PoolIntArray( 3, 0, 1048582, 4, 0, 1048583, 65532, 0, 1441799, 65533, 0, 538312710, 65541, 0, 1048582, 65542, 0, 1048581, 65543, 0, 1048583, 131065, 0, 1441799, 131066, 0, 1441797, 131067, 0, 1441798, 3, 1, 1048582, 4, 1, 1048583, 65532, 1, 1441799, 65533, 1, 538312710, 65541, 1, 1048582, 65542, 1, 1048581, 65543, 1, 1048583, 131065, 1, 538312711, 131066, 1, 1441797, 131067, 1, 1441798, 3, 2, 537919494, 4, 2, 1048583, 65532, 2, 1441799, 65533, 2, 1441798, 65541, 2, 1048582, 65542, 2, 1048581, 65543, 2, 1048583, 131065, 2, 1441799, 131066, 2, 1441797, 131067, 2, 1441798, 1, 4, 6, 2, 4, 6, 65534, 4, 536870918, 65535, 4, 6, 1, 5, 1073741831, 2, 5, 7, 65534, 5, 7, 65535, 5, 536870919, 65536, 6, 6, 65537, 6, 6, 65538, 6, 1073741830, 131070, 6, 6, 131071, 6, 6, 65536, 7, 655365, 65537, 7, 655365, 65538, 7, 655365, 131070, 7, 655365, 131071, 7, 655365, 65536, 8, 7, 65537, 8, 7, 65538, 8, 7, 131070, 8, 7, 131071, 8, 7, 65536, 65528, 655367, 65537, 65528, 655367, 65538, 65528, 655367, 131070, 65528, 655367, 131071, 65528, 655367, 65536, 65529, 5, 65537, 65529, 5, 65538, 65529, 5, 131070, 65529, 5, 131071, 65529, 5, 65536, 65530, 655366, 65537, 65530, 655366, 65538, 65530, 655366, 131070, 65530, 655366, 131071, 65530, 655366, 1, 65531, 655367, 2, 65531, 537526279, 65534, 65531, 655367, 65535, 65531, 655367, 1, 65532, 655366, 2, 65532, 655366, 65534, 65532, 655366, 65535, 65532, 655366, 3, 65534, 1048582, 4, 65534, 1048583, 65532, 65534, 538312711, 65533, 65534, 1441798, 65541, 65534, 1048582, 65542, 65534, 1048581, 65543, 65534, 1048583, 131065, 65534, 1441799, 131066, 65534, 538312709, 131067, 65534, 538312710, 3, 65535, -1609564154, 4, 65535, -1609564153, 65532, 65535, 1441799, 65533, 65535, 1441798, 65541, 65535, 1048582, 65542, 65535, 1048581, 65543, 65535, 1048583, 131065, 65535, 1441799, 131066, 65535, 1441797, 131067, 65535, 1441798 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="BirdMonster" parent="NavigationMelee" instance=ExtResource( 6 )]
-transform = Transform( -0.986028, 0, 0.16658, 0, 1, 0, -0.16658, 0, -0.986028, -23.5374, 0.825312, -0.0771103 )
+[node name="BladeTlaloque7" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( -0.96555, 0, 0.260218, 0, 1, 0, -0.260218, 0, -0.96555, -23.1061, 0.408387, 1.57331 )
 
-[node name="BirdMonster6" parent="NavigationMelee" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7426, 0.825312, -0.0771098 )
+[node name="BladeTlaloque8" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.84, 0.408387, 1.57331 )
 
-[node name="BirdMonster2" parent="NavigationMelee" instance=ExtResource( 6 )]
-transform = Transform( -0.0149043, 0, 0.999889, 0, 1, 0, -0.999889, 0, -0.0149043, -8.36199, 0, 0.404653 )
+[node name="BladeTlaloque5" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( 0.964613, 0, -0.263671, 0, 1, 0, 0.263671, 0, 0.964613, 20.3641, 0.408387, 23.694 )
 
-[node name="BirdMonster3" parent="NavigationMelee" instance=ExtResource( 6 )]
-transform = Transform( -0.988263, 0, -0.152761, 0, 1, 0, 0.152761, 0, -0.988263, 0, 0, 14.8373 )
-
-[node name="BirdMonster4" parent="NavigationMelee" instance=ExtResource( 6 )]
-transform = Transform( 0.998206, 0, -0.059881, 0, 1, 0, 0.059881, 0, 0.998206, 0.0446682, 0, -8.44774 )
-
-[node name="BirdMonster5" parent="NavigationMelee" instance=ExtResource( 6 )]
-transform = Transform( -0.148224, 0, -0.988954, 0, 1, 0, 0.988954, 0, -0.148224, 11.0056, 0, 0.404653 )
-
-[node name="ReptileMonster" parent="NavigationMelee" instance=ExtResource( 3 )]
-transform = Transform( -0.676452, 0, 0.736487, 0, 1, 0, -0.736487, 0, -0.676452, 23.8937, 0.407688, 14.4701 )
-
-[node name="ReptileMonster2" parent="NavigationMelee" instance=ExtResource( 3 )]
-transform = Transform( 0.90502, 0, 0.425369, 0, 1, 0, -0.425369, 0, 0.90502, 18.8882, 0, 22.6983 )
-
-[node name="JarTlaloque" parent="NavigationMelee" instance=ExtResource( 10 )]
-transform = Transform( 0.671113, 0, -0.741355, 0, 1, 0, 0.741355, 0, 0.671113, 8.93672, 0, -4.56118 )
+[node name="BladeTlaloque6" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( 0.964613, 0, -0.263671, 0, 1, 0, 0.263671, 0, 0.964613, 22.5213, 0.408387, 14.8036 )
 
 [node name="6 birds 2 reptiles" type="Spatial" parent="NavigationMelee"]
 
 [node name="BladeTlaloque" parent="NavigationMelee" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.44467 )
+transform = Transform( 0.0305035, 0, -0.999535, 0, 1, 0, 0.999535, 0, 0.0305035, 7.02978, 0, 0 )
+
+[node name="BladeTlaloque2" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( -0.166321, 0, 0.986072, 0, 1, 0, -0.986072, 0, -0.166321, -7.26466, 0, 0 )
+
+[node name="BladeTlaloque3" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( 0.947194, 0, 0.320662, 0, 1, 0, -0.320662, 0, 0.947194, 0.922249, 0, -12.4298 )
+
+[node name="BladeTlaloque4" parent="NavigationMelee" instance=ExtResource( 11 )]
+transform = Transform( -0.990273, 0, -0.139138, 0, 1, 0, 0.139138, 0, -0.990273, 0.922249, 0, 7.51429 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 12 )
