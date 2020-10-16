@@ -692,6 +692,7 @@ __meta__ = {
 }
 
 [node name="StatsDisplay" type="Label" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.169
 anchor_top = 0.098
 anchor_right = 0.169
@@ -724,6 +725,7 @@ anims/hurt = SubResource( 16 )
 anims/start = SubResource( 17 )
 
 [node name="PickupInfo" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 88.2585
 margin_top = 132.264
 margin_right = 440.258
@@ -743,6 +745,7 @@ __meta__ = {
 wait_time = 2.0
 
 [node name="ShaderCRT" parent="CanvasLayer" instance=ExtResource( 29 )]
+visible = false
 
 [node name="Audio" type="Spatial" parent="."]
 

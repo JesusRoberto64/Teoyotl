@@ -27,13 +27,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Teoyotl - Coyoli"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Levels/Vr level.tscn"
 boot_splash/image="res://assador.png"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=800
+window/size/width=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
