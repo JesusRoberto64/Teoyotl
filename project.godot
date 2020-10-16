@@ -37,6 +37,10 @@ window/size/width=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[gdnative]
+
+singletons=[ "res://addons/godot-oculus/godot_oculus.gdnlib", "res://addons/godot-openvr/godot_openvr.gdnlib" ]
+
 [importer_defaults]
 
 texture={
@@ -113,4 +117,5 @@ restart={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

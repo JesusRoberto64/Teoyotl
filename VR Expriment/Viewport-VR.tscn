@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Viewport-VR" type="Viewport"]
+size = Vector2( 1000, 600 )
+render_target_update_mode = 3
+
+[node name="ARVROrigin" type="ARVROrigin" parent="."]
+
+[node name="ARVRCamera" type="ARVRCamera" parent="ARVROrigin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
+current = true

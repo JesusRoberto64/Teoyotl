@@ -20,6 +20,10 @@ onready var health_mannager = $HealthMannager
 onready var weapon_mannager = $Camera/WeaponMannager
 onready var pickup_mannager = $PickupMannager
 var dead =  false 
+## VR INTEGRATION 
+
+var interface = null 
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -32,6 +36,29 @@ func _ready():
 	health_mannager.init()
 	health_mannager.connect("dead",self,"kill")
 	weapon_mannager.init($Camera/FirePoint,[self])
+	
+	##VR integration 
+#	interface = ARVRServer.find_interface("OpenVR")
+#	if interface and interface.initialize():
+#		# make godot de size of viewpor 
+#		$"Viewport-VR".size = interface.get_render_targetsize()
+#
+#		# tell viweport it is the arvr viweport
+#		$"Viewport-VR".arvr = true 
+#
+#		#older Drive 
+#		#$"Viewport-VR".hdr = false
+#
+#		# turn off vsync 
+#		OS.vsync_enabled = false
+#
+#		#change physics FPS
+#		Engine.target_fps = 90 
+#
+#		#Tell our display what we want to dispaly
+#		$"ViewportContainer/Viewport-UI".set_viewport_texture($"Viewport-VR".get_texture())
+#
+	
 
 func _process(_delta):
 	if Input.is_action_just_pressed("exit"):
