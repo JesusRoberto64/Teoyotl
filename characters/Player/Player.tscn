@@ -414,7 +414,6 @@ script = ExtResource( 4 )
 
 [node name="Machete" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
-visible = false
 script = ExtResource( 10 )
 damage = 12
 ammo = -1
@@ -425,10 +424,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, -0.06, 0 )
 
 [node name="machete" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 5 )]
 transform = Transform( 0.140774, 0, 0, 0, 0.140774, 0, 0, 0, 0.140774, 0, 0, 0 )
-visible = false
 
 [node name="aztec blade 03" parent="Camera/WeaponMannager/Weapons/Machete/Graphics" instance=ExtResource( 30 )]
 transform = Transform( -4.48143e-09, 4.48144e-09, 0.102523, 0.102523, -4.48143e-09, 4.48143e-09, 4.48144e-09, 0.102523, -4.48143e-09, 4.47035e-08, 0.0473676, -0.0613795 )
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/WeaponMannager/Weapons/Machete"]
 autoplay = "idle"
@@ -461,6 +460,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141876, 0.150195, 0.807911 
 visible = false
 script = ExtResource( 10 )
 automatic = true
+ammo = 60
 attack_rate = 0.1
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponMannager/Weapons/MachineGun"]
@@ -572,6 +572,7 @@ __meta__ = {
 
 [node name="RocketLuncher" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780897, 0.157459, 0.873379 )
+visible = false
 script = ExtResource( 10 )
 ammo = 1
 attack_rate = 1.0
@@ -692,6 +693,7 @@ __meta__ = {
 }
 
 [node name="StatsDisplay" type="Label" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.169
 anchor_top = 0.098
 anchor_right = 0.169
@@ -724,6 +726,7 @@ anims/hurt = SubResource( 16 )
 anims/start = SubResource( 17 )
 
 [node name="PickupInfo" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 88.2585
 margin_top = 132.264
 margin_right = 440.258

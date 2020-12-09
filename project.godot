@@ -27,8 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Teoyotl - Coyoli"
-run/main_scene="res://MainMenu.tscn"
-boot_splash/image="res://assador.png"
+run/main_scene="res://Levels/Cambya.tscn"
 config/icon="res://icon.png"
 
 [display]
