@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/wall door 1.glb-0538565e6f925031ab3f276e5ad636f5.scn"
+path="res://.import/wall 02.glb-8e116306adbedab02c646b4113427f3f.scn"
 
 [deps]
 
-source_file="res://enviromet/Camboya/Raw mesh/wall door 1.glb"
-dest_files=[ "res://.import/wall door 1.glb-0538565e6f925031ab3f276e5ad636f5.scn" ]
+source_file="res://enviromet/Camboya/Raw mesh/wall 02.glb"
+dest_files=[ "res://.import/wall 02.glb-8e116306adbedab02c646b4113427f3f.scn" ]
 
 [params]
 
