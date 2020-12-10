@@ -26,13 +26,13 @@
 [ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=24]
 [ext_resource path="res://UI/KLEINTEN.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=26]
-[ext_resource path="res://SFX/Foleys/balazo2.wav" type="AudioStream" id=27]
+[ext_resource path="res://SFX/Foleys/balzo3.wav" type="AudioStream" id=27]
 [ext_resource path="res://SFX/Foleys/sinbala.wav" type="AudioStream" id=28]
 [ext_resource path="res://Effects/ShaderCRT.tscn" type="PackedScene" id=29]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/aztec blade 03.glb" type="PackedScene" id=30]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Old Bow.tscn" type="PackedScene" id=31]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Magic Arrow.tscn" type="PackedScene" id=32]
-[ext_resource path="res://Music/TLALOCAN_COMBAT_THEME_teoyotl.ogg" type="AudioStream" id=33]
+[ext_resource path="res://SFX/Foleys/fire.wav" type="AudioStream" id=33]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -751,6 +751,7 @@ wait_time = 2.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 33 )
+autoplay = true
 [connection signal="ammo_changed" from="Camera/WeaponMannager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]
