@@ -26,13 +26,13 @@
 [ext_resource path="res://characters/Player/StatsDisplay.gd" type="Script" id=24]
 [ext_resource path="res://UI/KLEINTEN.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://characters/Player/PickupInfo.gd" type="Script" id=26]
-[ext_resource path="res://SFX/Foleys/balazo2.wav" type="AudioStream" id=27]
+[ext_resource path="res://SFX/Foleys/balzo3.wav" type="AudioStream" id=27]
 [ext_resource path="res://SFX/Foleys/sinbala.wav" type="AudioStream" id=28]
 [ext_resource path="res://Effects/ShaderCRT.tscn" type="PackedScene" id=29]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/aztec blade 03.glb" type="PackedScene" id=30]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Old Bow.tscn" type="PackedScene" id=31]
 [ext_resource path="res://weapons/raw_assets/Teoyotl Weapons/Magic Arrow.tscn" type="PackedScene" id=32]
-[ext_resource path="res://Music/TLALOCAN_COMBAT_THEME_teoyotl.ogg" type="AudioStream" id=33]
+[ext_resource path="res://SFX/Foleys/fire.wav" type="AudioStream" id=33]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -414,7 +414,6 @@ script = ExtResource( 4 )
 
 [node name="Machete" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129092, 0.0744598, 0.738216 )
-visible = false
 script = ExtResource( 10 )
 damage = 12
 ammo = -1
@@ -461,6 +460,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141876, 0.150195, 0.807911 
 visible = false
 script = ExtResource( 10 )
 automatic = true
+ammo = 60
 attack_rate = 0.1
 
 [node name="Graphics" type="Spatial" parent="Camera/WeaponMannager/Weapons/MachineGun"]
@@ -572,6 +572,7 @@ __meta__ = {
 
 [node name="RocketLuncher" type="Spatial" parent="Camera/WeaponMannager/Weapons"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780897, 0.157459, 0.873379 )
+visible = false
 script = ExtResource( 10 )
 ammo = 1
 attack_rate = 1.0
@@ -724,6 +725,7 @@ anims/hurt = SubResource( 16 )
 anims/start = SubResource( 17 )
 
 [node name="PickupInfo" type="Label" parent="CanvasLayer"]
+visible = false
 margin_left = 88.2585
 margin_top = 132.264
 margin_right = 440.258
@@ -743,11 +745,13 @@ __meta__ = {
 wait_time = 2.0
 
 [node name="ShaderCRT" parent="CanvasLayer" instance=ExtResource( 29 )]
+visible = false
 
 [node name="Audio" type="Spatial" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 33 )
+
 [connection signal="ammo_changed" from="Camera/WeaponMannager" to="CanvasLayer/StatsDisplay" method="update_ammo"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/GunShotSound" method="play"]
 [connection signal="fired" from="Camera/WeaponMannager/Weapons/MachineGun" to="Camera/WeaponMannager/Weapons/MachineGun/Graphics/MuzzleFlash" method="flash"]

@@ -3,7 +3,7 @@ extends Spatial
 enum WEAPONS_SLOTS {MACHETE,MACHINE_GUN,SHOTGUN,ROCKET_LAUNCHER}
 var slots_unlocked = {
 	WEAPONS_SLOTS.MACHETE: true,
-	WEAPONS_SLOTS.MACHINE_GUN: false,
+	WEAPONS_SLOTS.MACHINE_GUN: true,
 	WEAPONS_SLOTS.SHOTGUN: false,
 	WEAPONS_SLOTS.ROCKET_LAUNCHER: false,
 } 
@@ -34,7 +34,7 @@ func init(_fire_point: Spatial, _bodies_to_exclude: Array):
 	for weapon in weapons:
 		weapon.connect("fired",self,"emmit_ammo_changed_signal")
 	
-	switch_to_weapon_slot(WEAPONS_SLOTS.MACHETE)
+	switch_to_weapon_slot(WEAPONS_SLOTS.MACHINE_GUN)
 
 func attack(attack_input_just_pressed : bool, attack_input_held : bool):
 	if cur_weapon.has_method("attack"):
