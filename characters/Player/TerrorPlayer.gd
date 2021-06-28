@@ -24,7 +24,7 @@ var dead =  false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	character_mover.init(self)
-	
+	add_to_group("player")
 #	pickup_mannager.max_player_health = health_mannager.max_health
 #	health_mannager.connect("helath_changed",pickup_mannager,"update_players_health")
 #	pickup_mannager.connect("got_pickup",weapon_mannager,"get_pickup")
