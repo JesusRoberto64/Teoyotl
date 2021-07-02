@@ -4,7 +4,7 @@
 [ext_resource path="res://characters/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/Enemies/Monster.gd" type="Script" id=3]
 [ext_resource path="res://characters/HealthMannager.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/CharcaterMover.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/CharEnemyMover.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/Enemies/AimAtObject.gd" type="Script" id=6]
 [ext_resource path="res://weapons/DamageArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SFX/Chacters/hit2.wav" type="AudioStream" id=8]
@@ -13,7 +13,8 @@
 [ext_resource path="res://SFX/HitSound.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.5
+radius = 0.306354
+height = 1.23987
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.288078
@@ -49,10 +50,22 @@ attack_rate = 1.0
 attack_anim_speed_mod = 1.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0.883798, 0 )
 shape = SubResource( 1 )
 
 [node name="Graphics" parent="." instance=ExtResource( 1 )]
+
+[node name="Skeleton" parent="Graphics/Armature" index="0"]
+bones/0/bound_children = [ NodePath("Hip") ]
+bones/1/bound_children = [ NodePath("Body"), NodePath("Head") ]
+bones/2/bound_children = [ NodePath("ArmUL") ]
+bones/3/bound_children = [ NodePath("ArmLL") ]
+bones/4/bound_children = [ NodePath("ArmUR") ]
+bones/5/bound_children = [ NodePath("ArmLR") ]
+bones/6/bound_children = [ NodePath("LegUL") ]
+bones/7/bound_children = [ NodePath("LegLL") ]
+bones/8/bound_children = [ NodePath("LegUR") ]
+bones/9/bound_children = [ NodePath("LegLR") ]
 
 [node name="ArmUL" type="BoneAttachment" parent="Graphics/Armature/Skeleton" index="1"]
 transform = Transform( -0.762323, 0.647196, 8.20133e-07, -0.52914, -0.623267, 0.575803, 0.372658, 0.438947, 0.817589, 0.176714, 1.48577, -0.135291 )
@@ -194,8 +207,9 @@ shape = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30468, 0 )
 max_health = 20
 
-[node name="CharcaterMover" parent="." instance=ExtResource( 5 )]
-move_accel = 2
+[node name="CharEnemyMover" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30468, 0 )
+max_speed = 10
 ignore_rotation = true
 
 [node name="AimAtObject" type="Spatial" parent="."]

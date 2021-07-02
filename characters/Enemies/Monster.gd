@@ -1,11 +1,11 @@
 extends KinematicBody
 
-onready var character_mover = $CharcaterMover
+onready var character_mover = $CharEnemyMover
 onready var anim_player = $Graphics/AnimationPlayer
 onready var health_mannager = $HealthMannager
 onready var nav: Navigation = get_parent()
 
-enum STATES {IDLE, CHASE, ATTACK, DEAD}
+enum STATES {IDLE, CHASE, ATTACK, DEAD,PATROL}
 var cur_state = STATES.IDLE
 
 var player = null
@@ -18,10 +18,15 @@ export var attack_angle = 5.0
 export var attack_range = 2.0
 export var attack_rate = 0.5
 export var attack_anim_speed_mod = 0.5
+export var speed = 5.0
 var attack_timer : Timer
 var can_attack = true
 
 signal attack
+
+#Patrol points 
+var patrol_points = [] 
+
 
 func _ready():
 	attack_timer = Timer.new()
@@ -41,6 +46,9 @@ func _ready():
 	health_mannager.connect("gibbed",$Graphics,"hide")
 	character_mover.init(self)
 	set_state_idle()
+	
+	# Add patrol points 
+	
 
 func _process(delta):
 	
@@ -53,6 +61,9 @@ func _process(delta):
 			process_state_attack(delta)
 		STATES.DEAD:
 			process_state_dead(delta)
+		STATES.PATROL:
+			process_patrol_state(delta)
+			pass
 
 func set_state_idle():
 	cur_state = STATES.IDLE
@@ -80,16 +91,19 @@ func process_state_chase(delta):
 	if within_dist_of_player(attack_range) and has_los_player():
 		set_state_attack()
 	
-	var player_pos = player.global_transform.origin
-	var our_pos = global_transform.origin  
-	path = nav.get_simple_path(our_pos,player_pos)
-	var goal_pos = player_pos
-	if path.size() > 1:
-		goal_pos = path[1]
-	var dir = goal_pos - our_pos 
-	dir.y = 1
-	character_mover.set_move_vec(dir)
-	face_dir(dir,delta)
+	set_nav_movement(delta,player.global_transform.origin)
+	
+	#OLD SYSTEM 
+#	var player_pos = player.global_transform.origin
+#	var our_pos = global_transform.origin  
+#	path = nav.get_simple_path(our_pos,player_pos)
+#	var goal_pos = player_pos
+#	if path.size() > 1:
+#		goal_pos = path[1]
+#	var dir = goal_pos - our_pos 
+#	dir.y = 1
+#	character_mover.set_move_vec(dir)
+#	face_dir(dir,delta)
 
 func process_state_attack(delta):
 	character_mover.set_move_vec(Vector3.ZERO)
@@ -103,6 +117,13 @@ func process_state_attack(delta):
 			start_attack()
 
 func process_state_dead(delta):
+	pass
+
+func process_patrol_state(delta):
+	if patrol_points.size() <= 0:
+		return
+	
+	
 	pass
 
 func hurt(damage: int, dir: Vector3):
@@ -162,4 +183,28 @@ func alert(check_los=true):
 func within_dist_of_player(dis: float):
 	return global_transform.origin.distance_to(player.global_transform.origin) < attack_range
 
+func set_nav_movement(delta,final_Pos):
+	var direction = Vector3()
+	var step_size = delta * speed
+	
+	#var player_pos =  player.global_transform.origin 
+	var our_pos = translation#global_transform.origin  
+	path = nav.get_simple_path(our_pos,final_Pos,true)
+	
+	if path.size() > 1:
+		var destination = path[1] 
+		direction = destination - translation
+		
+		if step_size > direction.length():
+			step_size = direction.length()
+			path.remove(1)
+		
+		#move_and_slide(direction.normalized()*speed,Vector3.UP,true,4,70) # simple move in script
+		character_mover.set_move_vec(direction)
+		
+		direction.y = 0
+		if direction:
+			var look_at_point = translation - direction.normalized()
+			look_at(look_at_point,Vector3.UP)
+	
 
