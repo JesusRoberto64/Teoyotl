@@ -25,10 +25,13 @@ var can_attack = true
 signal attack
 
 #Patrol points 
-var patrol_points = [] 
-
+var patrol_points: PoolVector3Array = [] 
+export var id = 0
+var cur_point = 0
+var indx_pont = 0
 
 func _ready():
+	add_to_group("monsters")
 	attack_timer = Timer.new()
 	attack_timer.wait_time = attack_rate
 	attack_timer.connect("timeout",self,"finish_attack")
@@ -45,7 +48,8 @@ func _ready():
 	health_mannager.connect("dead",self,"set_state_dead")
 	health_mannager.connect("gibbed",$Graphics,"hide")
 	character_mover.init(self)
-	set_state_idle()
+	#set_state_idle()
+	set_state_patrol()
 	
 	# Add patrol points 
 	
@@ -72,6 +76,8 @@ func set_state_idle():
 func set_state_chase():
 	cur_state = STATES.CHASE
 	anim_player.play("walk_loop", 0.2)
+	character_mover.max_speed = 10.0
+	character_mover.move_accel = 8.0
 
 func set_state_attack():
 	cur_state = STATES.ATTACK
@@ -81,6 +87,13 @@ func set_state_dead():
 	anim_player.play("die")
 	character_mover.freeze()
 	$CollisionShape.disabled = true
+
+func set_state_patrol():
+	cur_state = STATES.PATROL
+	anim_player.play("walk_loop", 0.2)
+	character_mover.max_speed = 20.0
+	character_mover.move_accel = 5.0
+	pass
 
 func process_state_idle(delta):
 	if can_see_player():
@@ -121,7 +134,21 @@ func process_state_dead(delta):
 
 func process_patrol_state(delta):
 	if patrol_points.size() <= 0:
+		cur_state = STATES.IDLE
 		return
+	
+	if can_see_player():
+		#print("ya te vi")
+		#return
+		pass
+	
+	set_nav_movement(delta,patrol_points[cur_point])
+	
+	if global_transform.origin.distance_to(patrol_points[cur_point]) < 0.5:
+		indx_pont += 1
+		cur_point = indx_pont%patrol_points.size()
+		#print("Cerquita")
+		pass
 	
 	
 	pass

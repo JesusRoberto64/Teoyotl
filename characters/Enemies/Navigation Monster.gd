@@ -1,16 +1,17 @@
 extends Navigation
 
+onready var patrol_Points = $PatrolPoints
+var monsters = []
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+	var childrens = get_children()
+	
+	for i in childrens:
+		if i.is_in_group("monsters"):
+			for y in patrol_Points.get_children():
+				if y.id == i.id:
+					i.patrol_points = y.arr_Translate
+			pass
+		pass
+	pass

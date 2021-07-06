@@ -209,6 +209,7 @@ max_health = 20
 
 [node name="CharEnemyMover" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30468, 0 )
+move_accel = 4
 max_speed = 10
 ignore_rotation = true
 
